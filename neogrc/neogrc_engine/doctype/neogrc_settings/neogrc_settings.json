@@ -1,0 +1,250 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sb_general",
+  "canonical_framework",
+  "schema_version",
+  "cb_general",
+  "enabled",
+  "default_run_timeout",
+  "sb_storage",
+  "evidence_base_path",
+  "artifact_retention_days",
+  "cb_storage",
+  "hash_artifacts",
+  "attach_artifacts_to_run",
+  "sb_residency",
+  "residency_mode",
+  "allowed_egress_hosts",
+  "cb_residency",
+  "redact_raw_attributes",
+  "redaction_keys",
+  "sb_ai",
+  "ai_enabled",
+  "ai_provider",
+  "cb_ai",
+  "ai_endpoint",
+  "ai_model",
+  "sb_crosswalk",
+  "scf_api_base",
+  "crosswalk_last_import",
+  "sb_demo",
+  "demo_data_blocked"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_general",
+   "fieldtype": "Section Break",
+   "label": "General"
+  },
+  {
+   "fieldname": "canonical_framework",
+   "fieldtype": "Link",
+   "label": "Canonical Control Framework",
+   "options": "NeoGRC Framework",
+   "description": "Framework used as the internal control vocabulary. All crosswalks resolve through it. Set to NCC by after_install once the frameworks are seeded; left empty here because Frappe creates this Single during install, before any framework exists."
+  },
+  {
+   "fieldname": "schema_version",
+   "fieldtype": "Data",
+   "label": "Finding Schema Version",
+   "default": "1.0.0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_general",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Evidence Automation Enabled",
+   "default": "1"
+  },
+  {
+   "fieldname": "default_run_timeout",
+   "fieldtype": "Int",
+   "label": "Default Fetcher Timeout (s)",
+   "default": "300"
+  },
+  {
+   "fieldname": "sb_storage",
+   "fieldtype": "Section Break",
+   "label": "Evidence Storage & Retention"
+  },
+  {
+   "fieldname": "evidence_base_path",
+   "fieldtype": "Data",
+   "label": "Evidence Base Path",
+   "description": "Absolute path for collected evidence. Left empty at install and resolved to the site's private files directory, which is writable on managed hosting. Set it explicitly only if you have a dedicated evidence volume."
+  },
+  {
+   "fieldname": "artifact_retention_days",
+   "fieldtype": "Int",
+   "label": "Artifact Retention (days)",
+   "default": "1095"
+  },
+  {
+   "fieldname": "cb_storage",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hash_artifacts",
+   "fieldtype": "Check",
+   "label": "Hash Artifacts (SHA-256)",
+   "default": "1"
+  },
+  {
+   "fieldname": "attach_artifacts_to_run",
+   "fieldtype": "Check",
+   "label": "Attach Artifacts to Evidence Run",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_residency",
+   "fieldtype": "Section Break",
+   "label": "Data Residency & Privacy"
+  },
+  {
+   "fieldname": "residency_mode",
+   "fieldtype": "Select",
+   "label": "Residency Mode",
+   "options": "On-Premise Only\nOn-Premise + Approved Cloud\nUnrestricted",
+   "default": "On-Premise Only",
+   "description": "On-Premise Only blocks all outbound connector and AI calls to non-allow-listed hosts."
+  },
+  {
+   "fieldname": "allowed_egress_hosts",
+   "fieldtype": "Small Text",
+   "label": "Allowed Egress Hosts",
+   "description": "One host per line. Enforced when residency mode is not Unrestricted."
+  },
+  {
+   "fieldname": "cb_residency",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "redact_raw_attributes",
+   "fieldtype": "Check",
+   "label": "Redact Raw Attributes on Ingest",
+   "default": "0"
+  },
+  {
+   "fieldname": "redaction_keys",
+   "fieldtype": "Small Text",
+   "label": "Redaction Keys",
+   "default": "password\nsecret\ntoken\naccess_key\nprivate_key\nnational_id\niqama",
+   "depends_on": "eval:doc.redact_raw_attributes"
+  },
+  {
+   "fieldname": "sb_ai",
+   "fieldtype": "Section Break",
+   "label": "AI Narrative Generation"
+  },
+  {
+   "fieldname": "ai_enabled",
+   "fieldtype": "Check",
+   "label": "Enable AI Narratives",
+   "default": "0"
+  },
+  {
+   "fieldname": "ai_provider",
+   "fieldtype": "Select",
+   "label": "Provider",
+   "options": "Ollama (self-hosted)",
+   "default": "Ollama (self-hosted)",
+   "depends_on": "eval:doc.ai_enabled"
+  },
+  {
+   "fieldname": "cb_ai",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ai_endpoint",
+   "fieldtype": "Data",
+   "label": "Ollama Endpoint",
+   "default": "http://127.0.0.1:11434",
+   "depends_on": "eval:doc.ai_enabled"
+  },
+  {
+   "fieldname": "ai_model",
+   "fieldtype": "Data",
+   "label": "Model",
+   "default": "llama3.1:8b",
+   "depends_on": "eval:doc.ai_enabled"
+  },
+  {
+   "fieldname": "sb_crosswalk",
+   "fieldtype": "Section Break",
+   "label": "Crosswalk Import"
+  },
+  {
+   "fieldname": "scf_api_base",
+   "fieldtype": "Data",
+   "label": "SCF API Base URL",
+   "default": "https://grcengclub.github.io/scf-api/",
+   "description": "Optional. Used only by the manual crosswalk importer; never called automatically."
+  },
+  {
+   "fieldname": "crosswalk_last_import",
+   "fieldtype": "Datetime",
+   "label": "Last Crosswalk Import",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_demo",
+   "fieldtype": "Section Break",
+   "label": "Demo Data"
+  },
+  {
+   "fieldname": "demo_data_blocked",
+   "fieldtype": "Check",
+   "label": "Block Demo Data",
+   "default": "0",
+   "description": "Refuse neogrc.demo.dataset.install on this site. Set this on production so a demo dataset cannot be created by mistake."
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "issingle": 1,
+ "track_changes": 0
+}

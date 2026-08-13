@@ -1,0 +1,308 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fetcher_id",
+  "fetcher_name",
+  "cb_1",
+  "connector",
+  "enabled",
+  "sb_exec",
+  "handler_mode",
+  "handler",
+  "arguments",
+  "cb_exec",
+  "output_format",
+  "timeout",
+  "sb_meta",
+  "description",
+  "instructions",
+  "dependencies",
+  "tags",
+  "sb_controls",
+  "controls",
+  "sb_rules",
+  "validation_rules",
+  "emit_findings",
+  "sb_state",
+  "last_run",
+  "last_status",
+  "sb_query",
+  "query_doctype",
+  "query_filters",
+  "cb_query",
+  "query_condition",
+  "field_to_check",
+  "expected_value",
+  "threshold_value",
+  "tolerance_days"
+ ],
+ "fields": [
+  {
+   "fieldname": "fetcher_id",
+   "fieldtype": "Data",
+   "label": "Fetcher ID",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "Stable evidence identifier, e.g. EVD-BLOCK-ENC."
+  },
+  {
+   "fieldname": "fetcher_name",
+   "fieldtype": "Data",
+   "label": "Fetcher Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "connector",
+   "fieldtype": "Link",
+   "label": "Connector",
+   "options": "NeoGRC Connector",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_exec",
+   "fieldtype": "Section Break",
+   "label": "Execution"
+  },
+  {
+   "fieldname": "handler",
+   "fieldtype": "Data",
+   "label": "Handler",
+   "description": "Dotted Python path, or a script filename relative to the connector's script root.",
+   "depends_on": "eval:doc.handler_mode!='Query'",
+   "mandatory_depends_on": "eval:doc.handler_mode!='Query'"
+  },
+  {
+   "fieldname": "arguments",
+   "fieldtype": "Small Text",
+   "label": "Arguments",
+   "description": "One argument per line. Passed verbatim; no shell expansion is performed."
+  },
+  {
+   "fieldname": "cb_exec",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "output_format",
+   "fieldtype": "Select",
+   "label": "Output Format",
+   "options": "JSON\nText",
+   "default": "JSON"
+  },
+  {
+   "fieldname": "timeout",
+   "fieldtype": "Int",
+   "label": "Timeout (s)",
+   "default": "0",
+   "description": "0 inherits the connector timeout."
+  },
+  {
+   "fieldname": "sb_meta",
+   "fieldtype": "Section Break",
+   "label": "Documentation"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "instructions",
+   "fieldtype": "Text Editor",
+   "label": "Manual Reproduction Steps",
+   "description": "What an auditor would run by hand to reproduce this evidence."
+  },
+  {
+   "fieldname": "dependencies",
+   "fieldtype": "Small Text",
+   "label": "Dependencies"
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Small Text",
+   "label": "Tags"
+  },
+  {
+   "fieldname": "sb_controls",
+   "fieldtype": "Section Break",
+   "label": "Control Coverage"
+  },
+  {
+   "fieldname": "controls",
+   "fieldtype": "Table",
+   "label": "Controls",
+   "options": "NeoGRC Fetcher Control Link"
+  },
+  {
+   "fieldname": "sb_rules",
+   "fieldtype": "Section Break",
+   "label": "Automated Validation"
+  },
+  {
+   "fieldname": "validation_rules",
+   "fieldtype": "Table",
+   "label": "Validation Rules",
+   "options": "NeoGRC Validation Rule",
+   "description": "Evaluated against fetcher output. All rules must pass for the evaluation to be recorded as pass."
+  },
+  {
+   "fieldname": "emit_findings",
+   "fieldtype": "Check",
+   "label": "Emit Findings",
+   "default": "1",
+   "description": "When enabled, each run converts validation results into NeoGRC Finding records."
+  },
+  {
+   "fieldname": "sb_state",
+   "fieldtype": "Section Break",
+   "label": "State"
+  },
+  {
+   "fieldname": "last_run",
+   "fieldtype": "Datetime",
+   "label": "Last Run",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_status",
+   "fieldtype": "Select",
+   "label": "Last Status",
+   "options": "\nSuccess\nPartial\nFailed\nAuth Error\nRate Limited\nNot Installed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "handler_mode",
+   "fieldtype": "Select",
+   "label": "Handler Mode",
+   "options": "Script\nQuery",
+   "default": "Script",
+   "in_list_view": 1,
+   "description": "Script runs the connector handler. Query runs a declarative DocType query with no code."
+  },
+  {
+   "fieldname": "sb_query",
+   "fieldtype": "Section Break",
+   "label": "Evidence Query",
+   "depends_on": "eval:doc.handler_mode=='Query'",
+   "description": "Declarative evidence from a DocType already in this site. No script is deployed."
+  },
+  {
+   "fieldname": "query_doctype",
+   "fieldtype": "Link",
+   "options": "DocType",
+   "label": "Source DocType",
+   "mandatory_depends_on": "eval:doc.handler_mode=='Query'"
+  },
+  {
+   "fieldname": "query_filters",
+   "fieldtype": "Code",
+   "options": "JSON",
+   "label": "Filters (JSON)",
+   "description": "Frappe filter object. Supports the tokens \"@today\" and [\"<\", \"@days_ago:90\"]. Field names are validated against the DocType."
+  },
+  {
+   "fieldname": "cb_query",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "query_condition",
+   "fieldtype": "Select",
+   "label": "Pass Condition",
+   "options": "COUNT_EQUALS_ZERO\nCOUNT_LTE_THRESHOLD\nCOUNT_GTE_THRESHOLD\nALL_ROWS_FIELD_SET\nALL_ROWS_FIELD_EQUALS\nNO_ROW_OLDER_THAN_DAYS",
+   "default": "COUNT_EQUALS_ZERO"
+  },
+  {
+   "fieldname": "field_to_check",
+   "fieldtype": "Data",
+   "label": "Field to Check",
+   "depends_on": "eval:['ALL_ROWS_FIELD_SET','ALL_ROWS_FIELD_EQUALS','NO_ROW_OLDER_THAN_DAYS'].includes(doc.query_condition)"
+  },
+  {
+   "fieldname": "expected_value",
+   "fieldtype": "Data",
+   "label": "Expected Value",
+   "depends_on": "eval:doc.query_condition=='ALL_ROWS_FIELD_EQUALS'"
+  },
+  {
+   "fieldname": "threshold_value",
+   "fieldtype": "Int",
+   "label": "Threshold",
+   "depends_on": "eval:['COUNT_LTE_THRESHOLD','COUNT_GTE_THRESHOLD'].includes(doc.query_condition)"
+  },
+  {
+   "fieldname": "tolerance_days",
+   "fieldtype": "Int",
+   "label": "Tolerance (days)",
+   "depends_on": "eval:doc.query_condition=='NO_ROW_OLDER_THAN_DAYS'"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Evidence Fetcher",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:fetcher_id",
+ "naming_rule": "By fieldname",
+ "title_field": "fetcher_name",
+ "show_title_field_in_link": 1,
+ "search_fields": "fetcher_name,connector"
+}

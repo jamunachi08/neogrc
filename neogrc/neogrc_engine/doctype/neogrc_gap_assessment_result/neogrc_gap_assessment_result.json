@@ -1,0 +1,121 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "framework",
+  "control_id",
+  "control",
+  "control_title",
+  "status",
+  "worst_severity",
+  "pass_count",
+  "fail_count",
+  "inconclusive_count",
+  "na_count",
+  "effort_hours",
+  "automation",
+  "evidence_sources",
+  "mapped_via"
+ ],
+ "fields": [
+  {
+   "fieldname": "framework",
+   "fieldtype": "Link",
+   "label": "Framework",
+   "options": "NeoGRC Framework",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "control_id",
+   "fieldtype": "Data",
+   "label": "Control ID",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "control",
+   "fieldtype": "Link",
+   "label": "Control",
+   "options": "NeoGRC Control"
+  },
+  {
+   "fieldname": "control_title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "pass\nfail\nnot_applicable\ninconclusive\nnot_covered",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "worst_severity",
+   "fieldtype": "Select",
+   "label": "Severity",
+   "options": "\ncritical\nhigh\nmedium\nlow\ninfo",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "pass_count",
+   "fieldtype": "Int",
+   "label": "Pass",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "fail_count",
+   "fieldtype": "Int",
+   "label": "Fail",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "inconclusive_count",
+   "fieldtype": "Int",
+   "label": "Inconc."
+  },
+  {
+   "fieldname": "na_count",
+   "fieldtype": "Int",
+   "label": "N/A"
+  },
+  {
+   "fieldname": "effort_hours",
+   "fieldtype": "Float",
+   "label": "Effort (h)"
+  },
+  {
+   "fieldname": "automation",
+   "fieldtype": "Select",
+   "label": "Automation",
+   "options": "\nauto_fixable\nsemi_automated\nmanual\ndesign_change"
+  },
+  {
+   "fieldname": "evidence_sources",
+   "fieldtype": "Data",
+   "label": "Sources"
+  },
+  {
+   "fieldname": "mapped_via",
+   "fieldtype": "Data",
+   "label": "Mapped Via",
+   "description": "Canonical control the evidence was resolved through, when the mapping was indirect."
+  }
+ ],
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Gap Assessment Result",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "track_changes": 1
+}

@@ -1,0 +1,184 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "evidence_run",
+  "fetcher",
+  "cb_1",
+  "collected_at",
+  "validation_status",
+  "sb_file",
+  "file_name",
+  "artifact_file",
+  "file_path",
+  "cb_file",
+  "content_type",
+  "size_bytes",
+  "sha256",
+  "sb_detail",
+  "exit_code",
+  "validation_detail",
+  "stderr_excerpt"
+ ],
+ "fields": [
+  {
+   "fieldname": "evidence_run",
+   "fieldtype": "Link",
+   "label": "Evidence Run",
+   "options": "NeoGRC Evidence Run",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "fetcher",
+   "fieldtype": "Link",
+   "label": "Fetcher",
+   "options": "NeoGRC Evidence Fetcher",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "collected_at",
+   "fieldtype": "Datetime",
+   "label": "Collected At",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "validation_status",
+   "fieldtype": "Select",
+   "label": "Validation Status",
+   "options": "\npass\nfail\ninconclusive\nskipped",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_file",
+   "fieldtype": "Section Break",
+   "label": "Artifact"
+  },
+  {
+   "fieldname": "file_name",
+   "fieldtype": "Data",
+   "label": "File Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "artifact_file",
+   "fieldtype": "Attach",
+   "label": "Attached File",
+   "read_only": 1
+  },
+  {
+   "fieldname": "file_path",
+   "fieldtype": "Data",
+   "label": "Server Path",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_file",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "content_type",
+   "fieldtype": "Data",
+   "label": "Content Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "size_bytes",
+   "fieldtype": "Int",
+   "label": "Size (bytes)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sha256",
+   "fieldtype": "Data",
+   "label": "SHA-256",
+   "read_only": 1,
+   "description": "Integrity hash captured at collection time. Auditors can re-verify the artifact against this value."
+  },
+  {
+   "fieldname": "sb_detail",
+   "fieldtype": "Section Break",
+   "label": "Detail"
+  },
+  {
+   "fieldname": "exit_code",
+   "fieldtype": "Int",
+   "label": "Exit Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "validation_detail",
+   "fieldtype": "Code",
+   "label": "Validation Detail",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stderr_excerpt",
+   "fieldtype": "Small Text",
+   "label": "Stderr Excerpt",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Evidence Artifact",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "format:EVA-{YY}{MM}-{#####}",
+ "naming_rule": "Expression"
+}

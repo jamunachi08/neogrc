@@ -1,0 +1,29 @@
+{
+  "findings": [
+    {
+      "schema_version": "1.0.0",
+      "source": "k8s-inspector",
+      "source_version": "2026.01.01",
+      "run_id": "demo-batch-stale",
+      "collected_at": "2026-08-03T09:43:03Z",
+      "resource": {
+        "type": "k8s_cluster",
+        "id": "wadi-prod-cluster"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "NET-02",
+          "status": "pass",
+          "severity": "info"
+        },
+        {
+          "control_framework": "NCC",
+          "control_id": "CHG-01",
+          "status": "pass",
+          "severity": "info"
+        }
+      ]
+    }
+  ]
+}

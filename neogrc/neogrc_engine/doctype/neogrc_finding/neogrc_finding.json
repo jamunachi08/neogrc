@@ -1,0 +1,298 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "resource_id",
+  "resource_type",
+  "cb_1",
+  "rollup_status",
+  "worst_severity",
+  "sb_prov",
+  "source",
+  "source_version",
+  "schema_version",
+  "cb_prov",
+  "run_id",
+  "evidence_run",
+  "collected_at",
+  "sb_res",
+  "resource_arn",
+  "resource_uri",
+  "region",
+  "cb_res",
+  "account_id",
+  "resource_tags",
+  "sb_eval",
+  "evaluations",
+  "sb_raw",
+  "raw_attributes",
+  "metadata",
+  "sb_track",
+  "disposition",
+  "assigned_to",
+  "cb_track",
+  "linked_risk",
+  "linked_exception",
+  "resolution_note"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "GRF-.YY.MM.-.#####",
+   "default": "GRF-.YY.MM.-.#####",
+   "hidden": 1
+  },
+  {
+   "fieldname": "resource_id",
+   "fieldtype": "Data",
+   "label": "Resource ID",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "resource_type",
+   "fieldtype": "Data",
+   "label": "Resource Type",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rollup_status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "pass\nfail\nnot_applicable\ninconclusive\nskipped",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "worst_severity",
+   "fieldtype": "Select",
+   "label": "Worst Severity",
+   "options": "\ncritical\nhigh\nmedium\nlow\ninfo",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_prov",
+   "fieldtype": "Section Break",
+   "label": "Provenance"
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Data",
+   "label": "Source",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "description": "Connector ID that produced this finding."
+  },
+  {
+   "fieldname": "source_version",
+   "fieldtype": "Data",
+   "label": "Source Version",
+   "reqd": 1
+  },
+  {
+   "fieldname": "schema_version",
+   "fieldtype": "Data",
+   "label": "Schema Version",
+   "default": "1.0.0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_prov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "run_id",
+   "fieldtype": "Data",
+   "label": "Run ID",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "evidence_run",
+   "fieldtype": "Link",
+   "label": "Evidence Run",
+   "options": "NeoGRC Evidence Run",
+   "read_only": 1
+  },
+  {
+   "fieldname": "collected_at",
+   "fieldtype": "Datetime",
+   "label": "Collected At",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_res",
+   "fieldtype": "Section Break",
+   "label": "Resource"
+  },
+  {
+   "fieldname": "resource_arn",
+   "fieldtype": "Data",
+   "label": "ARN"
+  },
+  {
+   "fieldname": "resource_uri",
+   "fieldtype": "Data",
+   "label": "URI"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Data",
+   "label": "Region",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_res",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "account_id",
+   "fieldtype": "Data",
+   "label": "Account ID",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "resource_tags",
+   "fieldtype": "Code",
+   "label": "Resource Tags",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "sb_eval",
+   "fieldtype": "Section Break",
+   "label": "Evaluations"
+  },
+  {
+   "fieldname": "evaluations",
+   "fieldtype": "Table",
+   "label": "Evaluations",
+   "options": "NeoGRC Finding Evaluation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sb_raw",
+   "fieldtype": "Section Break",
+   "label": "Raw Attributes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "raw_attributes",
+   "fieldtype": "Code",
+   "label": "Raw Attributes",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "metadata",
+   "fieldtype": "Code",
+   "label": "Metadata",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "sb_track",
+   "fieldtype": "Section Break",
+   "label": "Tracking"
+  },
+  {
+   "fieldname": "disposition",
+   "fieldtype": "Select",
+   "label": "Disposition",
+   "options": "Open\nAcknowledged\nRemediated\nRisk Accepted\nFalse Positive\nSuppressed",
+   "default": "Open",
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "label": "Assigned To",
+   "options": "User"
+  },
+  {
+   "fieldname": "cb_track",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "linked_risk",
+   "fieldtype": "Link",
+   "label": "Linked Risk",
+   "options": "NeoGRC Risk"
+  },
+  {
+   "fieldname": "linked_exception",
+   "fieldtype": "Link",
+   "label": "Linked Exception",
+   "options": "NeoGRC Exception"
+  },
+  {
+   "fieldname": "resolution_note",
+   "fieldtype": "Small Text",
+   "label": "Resolution Note"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Finding",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "search_fields": "resource_id,source,run_id"
+}

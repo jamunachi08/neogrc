@@ -1,0 +1,134 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "control_framework",
+  "control_id",
+  "control",
+  "status",
+  "severity",
+  "assessed_at",
+  "sb_msg",
+  "message",
+  "sb_rem",
+  "remediation_summary",
+  "remediation_ref",
+  "cb_rem",
+  "effort_hours",
+  "automation",
+  "sb_ev",
+  "evidence_refs"
+ ],
+ "fields": [
+  {
+   "fieldname": "control_framework",
+   "fieldtype": "Link",
+   "label": "Framework",
+   "options": "NeoGRC Framework",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "control_id",
+   "fieldtype": "Data",
+   "label": "Control ID",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "control",
+   "fieldtype": "Link",
+   "label": "Control",
+   "options": "NeoGRC Control",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "pass\nfail\nnot_applicable\ninconclusive\nskipped",
+   "reqd": 1,
+   "default": "pass",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "label": "Severity",
+   "options": "\ncritical\nhigh\nmedium\nlow\ninfo",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "assessed_at",
+   "fieldtype": "Datetime",
+   "label": "Assessed At"
+  },
+  {
+   "fieldname": "sb_msg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Small Text",
+   "label": "Message",
+   "description": "Required when status is fail or inconclusive."
+  },
+  {
+   "fieldname": "sb_rem",
+   "fieldtype": "Section Break",
+   "label": "Remediation",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "remediation_summary",
+   "fieldtype": "Small Text",
+   "label": "Summary"
+  },
+  {
+   "fieldname": "remediation_ref",
+   "fieldtype": "Data",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "cb_rem",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "effort_hours",
+   "fieldtype": "Float",
+   "label": "Effort (hours)"
+  },
+  {
+   "fieldname": "automation",
+   "fieldtype": "Select",
+   "label": "Automation",
+   "options": "\nauto_fixable\nsemi_automated\nmanual\ndesign_change"
+  },
+  {
+   "fieldname": "sb_ev",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "evidence_refs",
+   "fieldtype": "Small Text",
+   "label": "Evidence References",
+   "description": "One path or URL per line, pointing at the raw artifact backing this evaluation."
+  }
+ ],
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Finding Evaluation",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "track_changes": 1
+}

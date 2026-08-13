@@ -1,0 +1,173 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "metric_id",
+  "label",
+  "cb_1",
+  "recorded_at",
+  "value",
+  "sb_2",
+  "unit",
+  "aggregation",
+  "cb_2",
+  "source",
+  "window_start",
+  "window_end",
+  "sb_3",
+  "dimensions",
+  "subject_type",
+  "subject_id",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "metric_id",
+   "fieldtype": "Data",
+   "label": "Metric ID",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Dotted key, e.g. automation.coverage_pct, findings.open_critical."
+  },
+  {
+   "fieldname": "label",
+   "fieldtype": "Data",
+   "label": "Label",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "recorded_at",
+   "fieldtype": "Datetime",
+   "label": "Recorded At",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Float",
+   "label": "Value",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "aggregation",
+   "fieldtype": "Select",
+   "label": "Aggregation",
+   "options": "\ngauge\ncounter\ncount\npercentage\nratio\ncurrency\nduration",
+   "default": "gauge"
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Data",
+   "label": "Source",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "window_start",
+   "fieldtype": "Datetime",
+   "label": "Window Start"
+  },
+  {
+   "fieldname": "window_end",
+   "fieldtype": "Datetime",
+   "label": "Window End"
+  },
+  {
+   "fieldname": "sb_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "dimensions",
+   "fieldtype": "Code",
+   "label": "Dimensions",
+   "options": "JSON",
+   "description": "e.g. {\"framework\": \"NCA-ECC-2\", \"business_unit\": \"platform\"}"
+  },
+  {
+   "fieldname": "subject_type",
+   "fieldtype": "Data",
+   "label": "Subject Type"
+  },
+  {
+   "fieldname": "subject_id",
+   "fieldtype": "Data",
+   "label": "Subject ID"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Metric",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "format:MET-{YY}{MM}-{#####}",
+ "naming_rule": "Expression",
+ "title_field": "metric_id",
+ "show_title_field_in_link": 1
+}

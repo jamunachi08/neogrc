@@ -1,0 +1,174 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "framework_code",
+  "framework_name",
+  "cb_1",
+  "version",
+  "authority",
+  "sb_2",
+  "region",
+  "category",
+  "cb_2",
+  "is_canonical",
+  "is_active",
+  "licensed_text_available",
+  "sb_3",
+  "description",
+  "reference_url",
+  "attribution_note"
+ ],
+ "fields": [
+  {
+   "fieldname": "framework_code",
+   "fieldtype": "Data",
+   "label": "Framework Code",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "Stable identifier, e.g. NCC, NIST-800-53-r5, ISO-27001-2022, NCA-ECC-2, FEDRAMP-20X-KSI."
+  },
+  {
+   "fieldname": "framework_name",
+   "fieldtype": "Data",
+   "label": "Framework Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "version",
+   "fieldtype": "Data",
+   "label": "Version",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "authority",
+   "fieldtype": "Data",
+   "label": "Issuing Authority"
+  },
+  {
+   "fieldname": "sb_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Select",
+   "label": "Region",
+   "options": "Global\nKSA\nGCC\nUnited States\nEuropean Union\nUnited Kingdom\nAsia Pacific\nOther",
+   "default": "Global",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Security\nPrivacy\nCloud\nFinancial\nHealthcare\nResilience\nAI Governance\nSector Regulation",
+   "default": "Security"
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "is_canonical",
+   "fieldtype": "Check",
+   "label": "Is Canonical Vocabulary",
+   "default": "0",
+   "description": "Exactly one framework should be canonical. Crosswalks pivot through it."
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1"
+  },
+  {
+   "fieldname": "licensed_text_available",
+   "fieldtype": "Check",
+   "label": "Licensed Control Text Loaded",
+   "default": "0",
+   "read_only": 1,
+   "description": "Set by the crosswalk importer when the customer loads their own licensed control text."
+  },
+  {
+   "fieldname": "sb_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "reference_url",
+   "fieldtype": "Data",
+   "label": "Reference URL",
+   "options": "URL"
+  },
+  {
+   "fieldname": "attribution_note",
+   "fieldtype": "Small Text",
+   "label": "Attribution / Licensing Note",
+   "description": "Record the licence under which any imported control text is held."
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Framework",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:framework_code",
+ "naming_rule": "By fieldname",
+ "title_field": "framework_name",
+ "show_title_field_in_link": 1,
+ "search_fields": "framework_name,version,region"
+}

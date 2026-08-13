@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "service_name",
+  "data_classification",
+  "hosting_region",
+  "is_subprocessor"
+ ],
+ "fields": [
+  {
+   "fieldname": "service_name",
+   "fieldtype": "Data",
+   "label": "Service",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "data_classification",
+   "fieldtype": "Select",
+   "label": "Data Classification",
+   "options": "\nPublic\nInternal\nConfidential\nRestricted\nPersonal Data",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "hosting_region",
+   "fieldtype": "Data",
+   "label": "Hosting Region",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "is_subprocessor",
+   "fieldtype": "Check",
+   "label": "Sub-processor"
+  }
+ ],
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Vendor Service",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "track_changes": 1
+}

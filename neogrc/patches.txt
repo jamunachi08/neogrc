@@ -1,0 +1,5 @@
+[pre_model_sync]
+
+[post_model_sync]
+neogrc.patches.v0_1_0.seed_grc_masters
+neogrc.patches.v0_1_0.backfill_finding_rollups

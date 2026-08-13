@@ -1,0 +1,284 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "risk_id",
+  "title",
+  "cb_1",
+  "status",
+  "category",
+  "sb_stmt",
+  "statement",
+  "owner_user",
+  "company",
+  "sb_inherent",
+  "inherent_likelihood",
+  "inherent_impact",
+  "cb_inh",
+  "inherent_score",
+  "inherent_band",
+  "sb_residual",
+  "residual_likelihood",
+  "residual_impact",
+  "cb_res",
+  "residual_score",
+  "residual_band",
+  "sb_treat",
+  "treatment",
+  "treatment_plan",
+  "cb_treat",
+  "target_close_at",
+  "reviewed_at",
+  "next_review_at",
+  "sb_links",
+  "linked_controls",
+  "linked_findings",
+  "tags"
+ ],
+ "fields": [
+  {
+   "fieldname": "risk_id",
+   "fieldtype": "Data",
+   "label": "Risk ID",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "open\nwatching\nmitigating\naccepted\ntransferred\nclosed",
+   "default": "open",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "\nCybersecurity\nPrivacy\nOperational\nFinancial\nRegulatory\nThird Party\nResilience\nAI",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_stmt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "statement",
+   "fieldtype": "Small Text",
+   "label": "Risk Statement"
+  },
+  {
+   "fieldname": "owner_user",
+   "fieldtype": "Link",
+   "label": "Risk Owner",
+   "options": "User",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "sb_inherent",
+   "fieldtype": "Section Break",
+   "label": "Inherent Assessment"
+  },
+  {
+   "fieldname": "inherent_likelihood",
+   "fieldtype": "Int",
+   "label": "Likelihood (1-5)",
+   "reqd": 1,
+   "default": "3"
+  },
+  {
+   "fieldname": "inherent_impact",
+   "fieldtype": "Int",
+   "label": "Impact (1-5)",
+   "reqd": 1,
+   "default": "3"
+  },
+  {
+   "fieldname": "cb_inh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inherent_score",
+   "fieldtype": "Int",
+   "label": "Inherent Score",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "inherent_band",
+   "fieldtype": "Select",
+   "label": "Inherent Band",
+   "options": "\nLow\nMedium\nHigh\nCritical",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_residual",
+   "fieldtype": "Section Break",
+   "label": "Residual Assessment"
+  },
+  {
+   "fieldname": "residual_likelihood",
+   "fieldtype": "Int",
+   "label": "Likelihood (1-5)"
+  },
+  {
+   "fieldname": "residual_impact",
+   "fieldtype": "Int",
+   "label": "Impact (1-5)"
+  },
+  {
+   "fieldname": "cb_res",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "residual_score",
+   "fieldtype": "Int",
+   "label": "Residual Score",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "residual_band",
+   "fieldtype": "Select",
+   "label": "Residual Band",
+   "options": "\nLow\nMedium\nHigh\nCritical",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_treat",
+   "fieldtype": "Section Break",
+   "label": "Treatment"
+  },
+  {
+   "fieldname": "treatment",
+   "fieldtype": "Select",
+   "label": "Treatment",
+   "options": "mitigate\naccept\ntransfer\navoid\nmonitor",
+   "default": "mitigate",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "treatment_plan",
+   "fieldtype": "Text Editor",
+   "label": "Treatment Plan"
+  },
+  {
+   "fieldname": "cb_treat",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_close_at",
+   "fieldtype": "Date",
+   "label": "Target Close Date"
+  },
+  {
+   "fieldname": "reviewed_at",
+   "fieldtype": "Date",
+   "label": "Last Reviewed"
+  },
+  {
+   "fieldname": "next_review_at",
+   "fieldtype": "Date",
+   "label": "Next Review",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_links",
+   "fieldtype": "Section Break",
+   "label": "Linkage"
+  },
+  {
+   "fieldname": "linked_controls",
+   "fieldtype": "Table",
+   "label": "Linked Controls",
+   "options": "NeoGRC Linked Control"
+  },
+  {
+   "fieldname": "linked_findings",
+   "fieldtype": "Table",
+   "label": "Linked Findings",
+   "options": "NeoGRC Linked Finding"
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Small Text",
+   "label": "Tags"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Risk",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:risk_id",
+ "naming_rule": "By fieldname",
+ "title_field": "title",
+ "show_title_field_in_link": 1,
+ "search_fields": "title,owner_user,status"
+}

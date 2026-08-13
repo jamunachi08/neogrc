@@ -1,0 +1,194 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "policy_id",
+  "title",
+  "cb_1",
+  "status",
+  "version",
+  "sb_own",
+  "owner_user",
+  "effective_at",
+  "cb_own",
+  "review_interval_days",
+  "next_review_at",
+  "sb_doc",
+  "document_file",
+  "document_path",
+  "summary",
+  "sb_appr",
+  "approvers",
+  "sb_map",
+  "control_refs"
+ ],
+ "fields": [
+  {
+   "fieldname": "policy_id",
+   "fieldtype": "Data",
+   "label": "Policy ID",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "draft\nin_review\napproved\nretired",
+   "default": "draft",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "version",
+   "fieldtype": "Data",
+   "label": "Version",
+   "reqd": 1,
+   "default": "1.0",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_own",
+   "fieldtype": "Section Break",
+   "label": "Ownership & Lifecycle"
+  },
+  {
+   "fieldname": "owner_user",
+   "fieldtype": "Link",
+   "label": "Policy Owner",
+   "options": "User",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "effective_at",
+   "fieldtype": "Date",
+   "label": "Effective From"
+  },
+  {
+   "fieldname": "cb_own",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "review_interval_days",
+   "fieldtype": "Int",
+   "label": "Review Interval (days)",
+   "default": "365"
+  },
+  {
+   "fieldname": "next_review_at",
+   "fieldtype": "Date",
+   "label": "Next Review",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_doc",
+   "fieldtype": "Section Break",
+   "label": "Document"
+  },
+  {
+   "fieldname": "document_file",
+   "fieldtype": "Attach",
+   "label": "Policy Document"
+  },
+  {
+   "fieldname": "document_path",
+   "fieldtype": "Data",
+   "label": "External Document Path",
+   "description": "Use when the authoritative document lives in a repository or DMS."
+  },
+  {
+   "fieldname": "summary",
+   "fieldtype": "Text Editor",
+   "label": "Summary"
+  },
+  {
+   "fieldname": "sb_appr",
+   "fieldtype": "Section Break",
+   "label": "Approvals"
+  },
+  {
+   "fieldname": "approvers",
+   "fieldtype": "Table",
+   "label": "Approvers",
+   "options": "NeoGRC Policy Approver"
+  },
+  {
+   "fieldname": "sb_map",
+   "fieldtype": "Section Break",
+   "label": "Control Coverage"
+  },
+  {
+   "fieldname": "control_refs",
+   "fieldtype": "Table",
+   "label": "Controls Addressed",
+   "options": "NeoGRC Linked Control"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Policy",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:policy_id",
+ "naming_rule": "By fieldname",
+ "title_field": "title",
+ "show_title_field_in_link": 1
+}

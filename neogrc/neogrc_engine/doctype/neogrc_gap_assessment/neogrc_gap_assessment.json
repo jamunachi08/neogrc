@@ -1,0 +1,261 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "assessment_title",
+  "status",
+  "cb_1",
+  "as_of",
+  "company",
+  "sb_scope",
+  "frameworks",
+  "sources",
+  "include_stale",
+  "lookback_days",
+  "sb_score",
+  "controls_total",
+  "controls_pass",
+  "controls_fail",
+  "cb_score",
+  "controls_not_covered",
+  "controls_inconclusive",
+  "coverage_pct",
+  "cb_score2",
+  "compliance_pct",
+  "remediation_effort_hours",
+  "weighted_risk_score",
+  "sb_results",
+  "results",
+  "sb_narr",
+  "executive_summary",
+  "run_log"
+ ],
+ "fields": [
+  {
+   "fieldname": "assessment_title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nQueued\nRunning\nCompleted\nFailed",
+   "default": "Draft",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "as_of",
+   "fieldtype": "Datetime",
+   "label": "As Of",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "sb_scope",
+   "fieldtype": "Section Break",
+   "label": "Scope"
+  },
+  {
+   "fieldname": "frameworks",
+   "fieldtype": "Table",
+   "label": "Target Frameworks",
+   "options": "NeoGRC Assessment Framework Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sources",
+   "fieldtype": "Table",
+   "label": "Evidence Sources",
+   "options": "NeoGRC Assessment Source Item",
+   "description": "Leave empty to use every enabled connector."
+  },
+  {
+   "fieldname": "include_stale",
+   "fieldtype": "Check",
+   "label": "Include Stale Findings",
+   "default": "0",
+   "description": "When off, findings older than the connector cache TTL are excluded and reported as inconclusive."
+  },
+  {
+   "fieldname": "lookback_days",
+   "fieldtype": "Int",
+   "label": "Lookback (days)",
+   "default": "90"
+  },
+  {
+   "fieldname": "sb_score",
+   "fieldtype": "Section Break",
+   "label": "Scorecard"
+  },
+  {
+   "fieldname": "controls_total",
+   "fieldtype": "Int",
+   "label": "Controls In Scope",
+   "read_only": 1
+  },
+  {
+   "fieldname": "controls_pass",
+   "fieldtype": "Int",
+   "label": "Passing",
+   "read_only": 1
+  },
+  {
+   "fieldname": "controls_fail",
+   "fieldtype": "Int",
+   "label": "Failing",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_score",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "controls_not_covered",
+   "fieldtype": "Int",
+   "label": "Not Covered",
+   "read_only": 1
+  },
+  {
+   "fieldname": "controls_inconclusive",
+   "fieldtype": "Int",
+   "label": "Inconclusive",
+   "read_only": 1
+  },
+  {
+   "fieldname": "coverage_pct",
+   "fieldtype": "Percent",
+   "label": "Automated Coverage %",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_score2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "compliance_pct",
+   "fieldtype": "Percent",
+   "label": "Compliance %",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "remediation_effort_hours",
+   "fieldtype": "Float",
+   "label": "Remediation Effort (h)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "weighted_risk_score",
+   "fieldtype": "Float",
+   "label": "Weighted Risk Score",
+   "read_only": 1,
+   "description": "Sum of failing controls weighted by severity: critical 10, high 6, medium 3, low 1."
+  },
+  {
+   "fieldname": "sb_results",
+   "fieldtype": "Section Break",
+   "label": "Results"
+  },
+  {
+   "fieldname": "results",
+   "fieldtype": "Table",
+   "label": "Results",
+   "options": "NeoGRC Gap Assessment Result",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_narr",
+   "fieldtype": "Section Break",
+   "label": "Narrative",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "executive_summary",
+   "fieldtype": "Text Editor",
+   "label": "Executive Summary"
+  },
+  {
+   "fieldname": "run_log",
+   "fieldtype": "Code",
+   "label": "Run Log",
+   "options": "Text",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Gap Assessment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "is_submittable": 1,
+ "autoname": "format:GAP-{YY}{MM}-{####}",
+ "naming_rule": "Expression",
+ "title_field": "assessment_title",
+ "show_title_field_in_link": 1
+}

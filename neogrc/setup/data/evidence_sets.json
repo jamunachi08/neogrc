@@ -1,0 +1,292 @@
+[
+ {
+  "set_id": "ES-ERP-BASELINE",
+  "set_name": "ERPNext Site Baseline",
+  "target_framework": "NCC",
+  "enabled": 1,
+  "schedule": "Weekly",
+  "description": "Identity, logging, backup and GRC hygiene evidence from this site. Runs with no external credentials.",
+  "fetchers": [
+   {
+    "fetcher": "EVD-ERP-2FA",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-PRIV",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-LEAVER",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-PWPOLICY",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-AUDITLOG",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-FAILEDLOGIN",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-BACKUP",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-APPS",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-EXCEPTIONS",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-POLICYREVIEW",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-VENDORREVIEW",
+    "required": 1
+   }
+  ]
+ },
+ {
+  "set_id": "ES-KSA-ECC-CORE",
+  "set_name": "NCA ECC Core Evidence",
+  "target_framework": "NCA-ECC-2",
+  "enabled": 1,
+  "schedule": "Monthly",
+  "description": "Evidence supporting the identity, logging, encryption and continuity domains of the NCA Essential Cybersecurity Controls.",
+  "fetchers": [
+   {
+    "fetcher": "EVD-ERP-2FA",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-PRIV",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-AUDITLOG",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-ERP-BACKUP",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-BLOCK-ENC",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-S3-ENC",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-CLOUDTRAIL",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-SEC-GROUPS",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-IAM-USERS",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-KMS-ROTATION",
+    "required": 1
+   }
+  ]
+ },
+ {
+  "set_id": "ES-FEDRAMP-20X",
+  "set_name": "FedRAMP 20x Key Security Indicators",
+  "target_framework": "FEDRAMP-20X-KSI",
+  "enabled": 0,
+  "schedule": "Monthly",
+  "description": "Machine-verifiable indicator evidence, mirroring the Paramify evidence-fetcher KSI mapping.",
+  "fetchers": [
+   {
+    "fetcher": "EVD-BLOCK-ENC",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-S3-ENC",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-AWS-SSL-ENFORCEMENT",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-CLOUDTRAIL",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-CONFIG-MONITORING",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-KMS-ROTATION",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-SEC-GROUPS",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-IAM-USERS",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-BACKUP-VALIDATION",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-GUARDDUTY",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-K8S-RBAC",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-CHECKOV-IAC",
+    "required": 1
+   }
+  ]
+ },
+ {
+  "set_id": "ES-CLOUD-QUARTERLY",
+  "set_name": "Cloud Posture Quarterly",
+  "target_framework": "NCC",
+  "enabled": 0,
+  "schedule": "Quarterly",
+  "description": "Full cloud and code evidence sweep for quarterly reporting.",
+  "fetchers": [
+   {
+    "fetcher": "EVD-BLOCK-ENC",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-S3-ENC",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-AWS-SSL-ENFORCEMENT",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-CLOUDTRAIL",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-CONFIG-MONITORING",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-KMS-ROTATION",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-SEC-GROUPS",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-IAM-USERS",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-BACKUP-VALIDATION",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-GUARDDUTY",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-WAF-RULES",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-K8S-RBAC",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-K8S-POLICY",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-OKTA-MFA",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-OKTA-DEPROVISION",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-GITLAB-BRANCH",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-GITLAB-SCAN",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-CHECKOV-IAC",
+    "required": 0
+   }
+  ]
+ },
+ {
+  "set_id": "ES-ERP-QUERY",
+  "set_name": "ERPNext Declarative Queries",
+  "target_framework": "NCC",
+  "enabled": 1,
+  "schedule": "Weekly",
+  "description": "Programme hygiene and identity evidence expressed as DocType queries. Two members ship disabled because their correct filters depend on site conventions - see each fetcher's instructions.",
+  "fetchers": [
+   {
+    "fetcher": "EVD-Q-LEAVER-ROLES",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-Q-STALE-SESSIONS",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-Q-API-KEYS",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-Q-POLICY-REVIEW",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-Q-EXCEPTION-EXPIRY",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-Q-RISK-REVIEW",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-Q-VENDOR-DPA",
+    "required": 1
+   },
+   {
+    "fetcher": "EVD-Q-BACKUP-FRESH",
+    "required": 0
+   },
+   {
+    "fetcher": "EVD-Q-EMPLOYEE-ACK",
+    "required": 1
+   }
+  ]
+ }
+]

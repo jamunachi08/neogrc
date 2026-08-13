@@ -1,0 +1,145 @@
+[
+ {
+  "framework_code": "NCC",
+  "framework_name": "Neotec Canonical Controls",
+  "version": "1.0",
+  "authority": "Neotec Integrated Solutions",
+  "region": "Global",
+  "category": "Security",
+  "is_canonical": 1,
+  "is_active": 1,
+  "description": "Framework-neutral control vocabulary. Every crosswalk pivots through it, so a connector only needs to know these identifiers.",
+  "attribution_note": "Original content, authored for NeoGRC. Freely editable."
+ },
+ {
+  "framework_code": "NCA-ECC-2",
+  "framework_name": "NCA Essential Cybersecurity Controls",
+  "version": "ECC-2:2024",
+  "authority": "National Cybersecurity Authority (Saudi Arabia)",
+  "region": "KSA",
+  "category": "Security",
+  "reference_url": "https://nca.gov.sa",
+  "description": "Mandatory baseline for Saudi government entities and critical national infrastructure.",
+  "attribution_note": "Control identifiers referenced only. Load your own copy of the NCA publication if you need the normative Arabic/English control text."
+ },
+ {
+  "framework_code": "NCA-CCC",
+  "framework_name": "NCA Cloud Cybersecurity Controls",
+  "version": "CCC-1:2020",
+  "authority": "National Cybersecurity Authority (Saudi Arabia)",
+  "region": "KSA",
+  "category": "Cloud",
+  "attribution_note": "Control identifiers referenced only."
+ },
+ {
+  "framework_code": "SAMA-CSF",
+  "framework_name": "SAMA Cyber Security Framework",
+  "version": "1.0",
+  "authority": "Saudi Central Bank",
+  "region": "KSA",
+  "category": "Financial",
+  "attribution_note": "Control identifiers referenced only."
+ },
+ {
+  "framework_code": "KSA-PDPL",
+  "framework_name": "Personal Data Protection Law (KSA)",
+  "version": "2023 Amended",
+  "authority": "SDAIA",
+  "region": "KSA",
+  "category": "Privacy",
+  "description": "Saudi personal data protection regime, including data residency and transfer-outside-Kingdom obligations.",
+  "attribution_note": "Article references only."
+ },
+ {
+  "framework_code": "NIST-800-53-r5",
+  "framework_name": "NIST SP 800-53 Revision 5",
+  "version": "Rev 5",
+  "authority": "NIST",
+  "region": "United States",
+  "category": "Security",
+  "reference_url": "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+  "attribution_note": "US Government work; control identifiers are in the public domain."
+ },
+ {
+  "framework_code": "ISO-27001-2022",
+  "framework_name": "ISO/IEC 27001:2022 Annex A",
+  "version": "2022",
+  "authority": "ISO/IEC",
+  "region": "Global",
+  "category": "Security",
+  "attribution_note": "Annex A control identifiers referenced only. Normative text remains the property of ISO/IEC and must be licensed separately."
+ },
+ {
+  "framework_code": "ISO-22301-2019",
+  "framework_name": "ISO 22301:2019 Business Continuity",
+  "version": "2019",
+  "authority": "ISO",
+  "region": "Global",
+  "category": "Resilience",
+  "attribution_note": "Clause identifiers referenced only."
+ },
+ {
+  "framework_code": "SOC2-TSC-2017",
+  "framework_name": "SOC 2 Trust Services Criteria",
+  "version": "2017 (2022 PoF)",
+  "authority": "AICPA",
+  "region": "United States",
+  "category": "Security",
+  "attribution_note": "Criteria identifiers referenced only."
+ },
+ {
+  "framework_code": "PCI-DSS-4.0",
+  "framework_name": "PCI DSS v4.0",
+  "version": "4.0",
+  "authority": "PCI Security Standards Council",
+  "region": "Global",
+  "category": "Financial",
+  "attribution_note": "Requirement identifiers referenced only."
+ },
+ {
+  "framework_code": "CIS-v8",
+  "framework_name": "CIS Critical Security Controls v8",
+  "version": "8.1",
+  "authority": "Center for Internet Security",
+  "region": "Global",
+  "category": "Security",
+  "attribution_note": "Safeguard identifiers referenced only."
+ },
+ {
+  "framework_code": "FEDRAMP-20X-KSI",
+  "framework_name": "FedRAMP 20x Key Security Indicators",
+  "version": "25.05",
+  "authority": "FedRAMP PMO / GSA",
+  "region": "United States",
+  "category": "Cloud",
+  "description": "Machine-verifiable indicators. The evidence-fetcher catalogue maps to these.",
+  "attribution_note": "US Government work; indicator identifiers are in the public domain."
+ },
+ {
+  "framework_code": "NIST-CSF-2.0",
+  "framework_name": "NIST Cybersecurity Framework 2.0",
+  "version": "2.0",
+  "authority": "NIST",
+  "region": "United States",
+  "category": "Security",
+  "attribution_note": "US Government work; subcategory identifiers are in the public domain."
+ },
+ {
+  "framework_code": "ISO-42001-2023",
+  "framework_name": "ISO/IEC 42001:2023 AI Management System",
+  "version": "2023",
+  "issuer": "ISO/IEC",
+  "is_canonical": 0,
+  "is_active": 1,
+  "attribution_note": "Annex A control identifiers referenced only. Normative text remains the property of ISO/IEC and must be licensed separately."
+ },
+ {
+  "framework_code": "EU-GDPR",
+  "framework_name": "EU General Data Protection Regulation",
+  "version": "2016/679",
+  "issuer": "European Union",
+  "is_canonical": 0,
+  "is_active": 1,
+  "attribution_note": "Regulation (EU) 2016/679. Article numbers and titles are published legislative text."
+ }
+]

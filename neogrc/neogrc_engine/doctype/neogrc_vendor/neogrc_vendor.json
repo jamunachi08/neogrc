@@ -1,0 +1,219 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "vendor_id",
+  "vendor_name",
+  "cb_1",
+  "tier",
+  "status",
+  "sb_own",
+  "owner_user",
+  "supplier",
+  "cb_own",
+  "last_review_at",
+  "next_review_at",
+  "review_interval_days",
+  "sb_svc",
+  "services",
+  "processes_personal_data",
+  "dpa_reference",
+  "data_residency",
+  "sb_contacts",
+  "contacts",
+  "sb_risk",
+  "linked_findings",
+  "assurance_evidence"
+ ],
+ "fields": [
+  {
+   "fieldname": "vendor_id",
+   "fieldtype": "Data",
+   "label": "Vendor ID",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vendor_name",
+   "fieldtype": "Data",
+   "label": "Vendor Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tier",
+   "fieldtype": "Select",
+   "label": "Tier",
+   "options": "critical\nhigh\nmedium\nlow\nout-of-scope",
+   "default": "medium",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "prospect\nactive\npaused\noffboarded",
+   "default": "active",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_own",
+   "fieldtype": "Section Break",
+   "label": "Ownership"
+  },
+  {
+   "fieldname": "owner_user",
+   "fieldtype": "Link",
+   "label": "Internal Owner",
+   "options": "User",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "ERPNext Supplier",
+   "options": "Supplier",
+   "description": "Optional link to the buying-side supplier master."
+  },
+  {
+   "fieldname": "cb_own",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_review_at",
+   "fieldtype": "Date",
+   "label": "Last Review"
+  },
+  {
+   "fieldname": "next_review_at",
+   "fieldtype": "Date",
+   "label": "Next Review",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "review_interval_days",
+   "fieldtype": "Int",
+   "label": "Review Interval (days)",
+   "default": "365"
+  },
+  {
+   "fieldname": "sb_svc",
+   "fieldtype": "Section Break",
+   "label": "Services"
+  },
+  {
+   "fieldname": "services",
+   "fieldtype": "Table",
+   "label": "Services",
+   "options": "NeoGRC Vendor Service"
+  },
+  {
+   "fieldname": "processes_personal_data",
+   "fieldtype": "Check",
+   "label": "Processes Personal Data",
+   "description": "When checked, a data-processing agreement reference becomes mandatory."
+  },
+  {
+   "fieldname": "dpa_reference",
+   "fieldtype": "Data",
+   "label": "DPA Reference",
+   "depends_on": "eval:doc.processes_personal_data"
+  },
+  {
+   "fieldname": "data_residency",
+   "fieldtype": "Data",
+   "label": "Data Residency"
+  },
+  {
+   "fieldname": "sb_contacts",
+   "fieldtype": "Section Break",
+   "label": "Contacts"
+  },
+  {
+   "fieldname": "contacts",
+   "fieldtype": "Table",
+   "label": "Contacts",
+   "options": "NeoGRC Vendor Contact"
+  },
+  {
+   "fieldname": "sb_risk",
+   "fieldtype": "Section Break",
+   "label": "Risk"
+  },
+  {
+   "fieldname": "linked_findings",
+   "fieldtype": "Table",
+   "label": "Linked Findings",
+   "options": "NeoGRC Linked Finding"
+  },
+  {
+   "fieldname": "assurance_evidence",
+   "fieldtype": "Small Text",
+   "label": "Assurance Evidence",
+   "description": "e.g. SOC 2 Type II report date, ISO 27001 certificate number and expiry."
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Vendor",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:vendor_id",
+ "naming_rule": "By fieldname",
+ "title_field": "vendor_name",
+ "show_title_field_in_link": 1,
+ "search_fields": "vendor_name,tier,status"
+}

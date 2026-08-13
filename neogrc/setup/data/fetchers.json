@@ -1,0 +1,1317 @@
+[
+ {
+  "fetcher_id": "EVD-ERP-2FA",
+  "fetcher_name": "Desk Two-Factor Authentication",
+  "connector": "erpnext-internal",
+  "handler": "neogrc.engine.internal_fetchers.two_factor_status",
+  "enabled": 1,
+  "description": "Enumerates enabled desk users and whether MFA is enforced for each.",
+  "instructions": "Compare System Settings > Enable Two Factor Authentication against the enabled System User list.",
+  "tags": "identity,mfa",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-02",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-01",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "IAM-02",
+    "severity": "critical"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "users_without_2fa",
+    "logic": "VALUE_LTE_EXPECTED",
+    "severity_on_fail": "critical",
+    "expected_value": "0",
+    "message_on_fail": "One or more desk users can authenticate without a second factor"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-ERP-PRIV",
+  "fetcher_name": "Privileged Access Review",
+  "connector": "erpnext-internal",
+  "handler": "neogrc.engine.internal_fetchers.privileged_access_review",
+  "enabled": 1,
+  "description": "System Manager role holders and how long since each was last active.",
+  "tags": "identity,privilege",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-03",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-04",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "dormant_system_managers",
+    "logic": "VALUE_LTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "0",
+    "message_on_fail": "A System Manager has not been active for 90 days; standing privilege without use"
+   },
+   {
+    "rule_type": "JSON Path",
+    "pattern": "system_managers",
+    "logic": "VALUE_LTE_EXPECTED",
+    "severity_on_fail": "medium",
+    "expected_value": "5",
+    "message_on_fail": "More than five System Managers - review whether all still need the role"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-ERP-LEAVER",
+  "fetcher_name": "Disabled User Access Removal",
+  "connector": "erpnext-internal",
+  "handler": "neogrc.engine.internal_fetchers.disabled_user_access_removal",
+  "enabled": 1,
+  "description": "Disabled accounts that still carry role assignments.",
+  "tags": "identity,jml",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-05",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "disabled_users_with_roles",
+    "logic": "VALUE_LTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "0",
+    "message_on_fail": "Disabled accounts still hold roles; revocation is incomplete"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-ERP-PWPOLICY",
+  "fetcher_name": "Password Policy Configuration",
+  "connector": "erpnext-internal",
+  "handler": "neogrc.engine.internal_fetchers.password_policy",
+  "enabled": 1,
+  "description": "Password strength, reset interval and session expiry settings.",
+  "tags": "identity,credentials",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-06",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "minimum_password_score",
+    "logic": "VALUE_GTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "2",
+    "message_on_fail": "Minimum password score is below 2 (Good)"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-ERP-AUDITLOG",
+  "fetcher_name": "Audit Logging Configuration",
+  "connector": "erpnext-internal",
+  "handler": "neogrc.engine.internal_fetchers.audit_log_configuration",
+  "enabled": 1,
+  "description": "Change tracking coverage and activity log volume.",
+  "tags": "logging",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "LOG-01",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "LOG-02",
+    "severity": "high"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "MLA-01",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "logging_active",
+    "logic": "VALUE_EQUALS_EXPECTED",
+    "severity_on_fail": "critical",
+    "expected_value": "1",
+    "message_on_fail": "No activity log entries in the last 7 days - logging may not be operating"
+   },
+   {
+    "rule_type": "JSON Path",
+    "pattern": "doctypes_with_change_tracking",
+    "logic": "VALUE_GTE_EXPECTED",
+    "severity_on_fail": "medium",
+    "expected_value": "1",
+    "message_on_fail": "No doctypes have change tracking enabled"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-ERP-FAILEDLOGIN",
+  "fetcher_name": "Failed Login Monitoring",
+  "connector": "erpnext-internal",
+  "handler": "neogrc.engine.internal_fetchers.failed_login_monitoring",
+  "enabled": 1,
+  "description": "Failed authentication volume and account lockout configuration.",
+  "tags": "logging,detection",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "LOG-03",
+    "severity": "high"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-01",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "lockout_threshold",
+    "logic": "VALUE_GTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "1",
+    "message_on_fail": "No consecutive failed login limit is configured"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-ERP-BACKUP",
+  "fetcher_name": "Backup Freshness",
+  "connector": "erpnext-internal",
+  "handler": "neogrc.engine.internal_fetchers.backup_status",
+  "enabled": 1,
+  "description": "Age and size of the most recent database backup.",
+  "instructions": "bench --site <site> list-backups",
+  "tags": "resilience,backup",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "DAT-03",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "RPL-02",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "backup_found",
+    "logic": "VALUE_EQUALS_EXPECTED",
+    "severity_on_fail": "critical",
+    "expected_value": "1",
+    "message_on_fail": "No database backup file was found on this site"
+   },
+   {
+    "rule_type": "JSON Path",
+    "pattern": "backup_age_hours",
+    "logic": "VALUE_LTE_EXPECTED",
+    "severity_on_fail": "critical",
+    "expected_value": "48",
+    "message_on_fail": "The most recent backup is older than 48 hours"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-ERP-APPS",
+  "fetcher_name": "Installed Application Inventory",
+  "connector": "erpnext-internal",
+  "handler": "neogrc.engine.internal_fetchers.installed_app_inventory",
+  "enabled": 1,
+  "description": "Installed apps and their versions.",
+  "tags": "asset",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "AST-01",
+    "severity": "medium"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "installed_apps",
+    "logic": "VALUE_GTE_EXPECTED",
+    "severity_on_fail": "medium",
+    "expected_value": "1",
+    "message_on_fail": "Application inventory returned no apps"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-ERP-EXCEPTIONS",
+  "fetcher_name": "Exception Expiry Check",
+  "connector": "erpnext-internal",
+  "handler": "neogrc.engine.internal_fetchers.exception_expiry_check",
+  "enabled": 1,
+  "description": "Approved exceptions that have passed their expiry date.",
+  "tags": "governance",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "GOV-05",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "expired_open_exceptions",
+    "logic": "VALUE_LTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "0",
+    "message_on_fail": "Approved exceptions have expired without being closed or renewed"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-ERP-POLICYREVIEW",
+  "fetcher_name": "Policy Review Currency",
+  "connector": "erpnext-internal",
+  "handler": "neogrc.engine.internal_fetchers.policy_review_currency",
+  "enabled": 1,
+  "description": "Approved policies past their scheduled review date.",
+  "tags": "governance,policy",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "GOV-02",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "overdue_reviews",
+    "logic": "VALUE_LTE_EXPECTED",
+    "severity_on_fail": "medium",
+    "expected_value": "0",
+    "message_on_fail": "Approved policies are past their review date"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-ERP-VENDORREVIEW",
+  "fetcher_name": "Vendor Review Currency",
+  "connector": "erpnext-internal",
+  "handler": "neogrc.engine.internal_fetchers.vendor_review_currency",
+  "enabled": 1,
+  "description": "Active vendors past their scheduled review date.",
+  "tags": "tprm",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "TPR-02",
+    "severity": "high"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "TPR-01",
+    "severity": "medium"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "critical_overdue",
+    "logic": "VALUE_LTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "0",
+    "message_on_fail": "Critical-tier vendors are overdue for review"
+   },
+   {
+    "rule_type": "JSON Path",
+    "pattern": "overdue_reviews",
+    "logic": "VALUE_LTE_EXPECTED",
+    "severity_on_fail": "medium",
+    "expected_value": "3",
+    "message_on_fail": "More than three vendors are overdue for review"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-BLOCK-ENC",
+  "fetcher_name": "Block Storage Encryption",
+  "connector": "aws-inspector",
+  "handler": "block_storage_encryption_status.sh",
+  "enabled": 0,
+  "description": "EBS and EFS encryption-at-rest status, including the account default.",
+  "instructions": "aws ec2 get-ebs-encryption-by-default; aws ec2 describe-volumes; aws efs describe-file-systems",
+  "dependencies": "aws-cli\njq",
+  "tags": "encryption,storage",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "CRY-01",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "SVC-03",
+    "severity": "critical"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"total_storage\":\\s*(\\d+),\\s*\"encrypted_storage\":\\s*(\\d+)",
+    "logic": "GROUP1_EQUALS_GROUP2",
+    "severity_on_fail": "critical",
+    "message_on_fail": "Not every block storage volume is encrypted at rest"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-S3-ENC",
+  "fetcher_name": "S3 Encryption Status",
+  "connector": "aws-inspector",
+  "handler": "s3_encryption_status.sh",
+  "enabled": 0,
+  "description": "Default encryption configuration across S3 buckets.",
+  "dependencies": "aws-cli\njq",
+  "tags": "encryption,s3",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "CRY-01",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "CLD-04",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "SVC-03",
+    "severity": "critical"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"total_buckets\":\\s*(\\d+),\\s*\"encrypted_buckets\":\\s*(\\d+)",
+    "logic": "GROUP1_EQUALS_GROUP2",
+    "severity_on_fail": "critical",
+    "message_on_fail": "One or more S3 buckets have no default encryption"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-AWS-SSL-ENFORCEMENT",
+  "fetcher_name": "Component SSL Enforcement",
+  "connector": "aws-inspector",
+  "handler": "aws_component_ssl_enforcement_status.sh",
+  "enabled": 0,
+  "description": "TLS enforcement across S3 bucket policies and RDS parameter groups.",
+  "dependencies": "aws-cli\njq",
+  "tags": "encryption,tls",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "CRY-02",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "SVC-02",
+    "severity": "critical"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"total_components\":\\s*(\\d+),\\s*\"ssl_enforced\":\\s*(\\d+)",
+    "logic": "GROUP1_EQUALS_GROUP2",
+    "severity_on_fail": "critical",
+    "message_on_fail": "Components accept connections without TLS enforcement"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-CLOUDTRAIL",
+  "fetcher_name": "CloudTrail Configuration",
+  "connector": "aws-inspector",
+  "handler": "cloudtrail_configuration.sh",
+  "enabled": 0,
+  "description": "Trail coverage, multi-region status and log file validation.",
+  "dependencies": "aws-cli\njq",
+  "tags": "logging",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "LOG-01",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "LOG-02",
+    "severity": "high"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "MLA-01",
+    "severity": "critical"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"multi_region_trails\":\\s*(\\d+)",
+    "logic": "GROUP1_GTE_EXPECTED",
+    "severity_on_fail": "critical",
+    "expected_value": "1",
+    "message_on_fail": "No multi-region CloudTrail trail is configured"
+   },
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"log_file_validation_enabled\":\\s*(true|false)",
+    "logic": "GROUP1_EQUALS_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "true",
+    "message_on_fail": "CloudTrail log file validation is disabled, so tampering would not be detectable"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-CONFIG-MONITORING",
+  "fetcher_name": "AWS Config Monitoring",
+  "connector": "aws-inspector",
+  "handler": "aws_config_monitoring.sh",
+  "enabled": 0,
+  "description": "Configuration recorder and delivery channel status.",
+  "dependencies": "aws-cli\njq",
+  "tags": "configuration",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "CLD-02",
+    "severity": "high"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "SVC-04",
+    "severity": "high"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "PIY-01",
+    "severity": "medium"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"recording\":\\s*(true|false)",
+    "logic": "GROUP1_EQUALS_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "true",
+    "message_on_fail": "AWS Config is not recording"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-KMS-ROTATION",
+  "fetcher_name": "KMS Key Rotation",
+  "connector": "aws-inspector",
+  "handler": "kms_key_rotation.sh",
+  "enabled": 0,
+  "description": "Automatic rotation status for customer-managed keys.",
+  "dependencies": "aws-cli\njq",
+  "tags": "encryption,keys",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "CRY-03",
+    "severity": "high"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "SVC-06",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"total_keys\":\\s*(\\d+),\\s*\"rotation_enabled\":\\s*(\\d+)",
+    "logic": "GROUP1_EQUALS_GROUP2",
+    "severity_on_fail": "high",
+    "message_on_fail": "Customer-managed keys exist without automatic rotation"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-SEC-GROUPS",
+  "fetcher_name": "Security Group Ingress",
+  "connector": "aws-inspector",
+  "handler": "security_groups.sh",
+  "enabled": 0,
+  "description": "Security group rules, highlighting unrestricted ingress.",
+  "dependencies": "aws-cli\njq",
+  "tags": "network",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "NET-02",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "CLD-04",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "CNA-03",
+    "severity": "critical"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"unrestricted_ingress_rules\":\\s*(\\d+)",
+    "logic": "GROUP1_LTE_EXPECTED",
+    "severity_on_fail": "critical",
+    "expected_value": "0",
+    "message_on_fail": "Security groups permit unrestricted inbound access from 0.0.0.0/0"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-IAM-USERS",
+  "fetcher_name": "IAM Users and Groups",
+  "connector": "aws-inspector",
+  "handler": "iam_users_groups.sh",
+  "enabled": 0,
+  "description": "IAM user inventory, MFA enrolment and access key age.",
+  "dependencies": "aws-cli\njq",
+  "tags": "identity",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-01",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-02",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-06",
+    "severity": "high"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "IAM-01",
+    "severity": "critical"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"users_without_mfa\":\\s*(\\d+)",
+    "logic": "GROUP1_LTE_EXPECTED",
+    "severity_on_fail": "critical",
+    "expected_value": "0",
+    "message_on_fail": "IAM users exist without MFA enrolled"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-BACKUP-VALIDATION",
+  "fetcher_name": "Backup Validation",
+  "connector": "aws-inspector",
+  "handler": "backup_validation.sh",
+  "enabled": 0,
+  "description": "AWS Backup plan coverage and recent recovery point status.",
+  "dependencies": "aws-cli\njq",
+  "tags": "resilience",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "DAT-03",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "RPL-02",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"failed_jobs\":\\s*(\\d+)",
+    "logic": "GROUP1_LTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "0",
+    "message_on_fail": "Backup jobs have failed within the reporting window"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-GUARDDUTY",
+  "fetcher_name": "GuardDuty Detection",
+  "connector": "aws-inspector",
+  "handler": "guard_duty.sh",
+  "enabled": 0,
+  "description": "GuardDuty detector status and open findings by severity.",
+  "dependencies": "aws-cli\njq",
+  "tags": "detection",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "LOG-03",
+    "severity": "high"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "MLA-03",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"detector_enabled\":\\s*(true|false)",
+    "logic": "GROUP1_EQUALS_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "true",
+    "message_on_fail": "GuardDuty is not enabled"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-WAF-RULES",
+  "fetcher_name": "WAF Rule Coverage",
+  "connector": "aws-inspector",
+  "handler": "waf_all_rules.sh",
+  "enabled": 0,
+  "description": "Web ACL association and rule group coverage.",
+  "dependencies": "aws-cli\njq",
+  "tags": "network",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "NET-04",
+    "severity": "medium"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "CNA-05",
+    "severity": "medium"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"web_acls\":\\s*(\\d+)",
+    "logic": "GROUP1_GTE_EXPECTED",
+    "severity_on_fail": "medium",
+    "expected_value": "1",
+    "message_on_fail": "No Web ACL is configured"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-K8S-RBAC",
+  "fetcher_name": "Kubernetes RBAC Least Privilege",
+  "connector": "k8s-inspector",
+  "handler": "k8s_rbac_review.sh",
+  "enabled": 0,
+  "description": "Cluster role bindings, highlighting cluster-admin grants.",
+  "dependencies": "kubectl\njq",
+  "tags": "identity,kubernetes",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-03",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "CLD-03",
+    "severity": "high"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "SVC-05",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"cluster_admin_bindings\":\\s*(\\d+)",
+    "logic": "GROUP1_LTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "2",
+    "message_on_fail": "More than two cluster-admin bindings exist"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-K8S-POLICY",
+  "fetcher_name": "Kubernetes Admission Policy",
+  "connector": "k8s-inspector",
+  "handler": "k8s_admission_policy.sh",
+  "enabled": 0,
+  "description": "Pod security admission and network policy coverage per namespace.",
+  "dependencies": "kubectl\njq",
+  "tags": "kubernetes",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "CLD-03",
+    "severity": "high"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "NET-01",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"namespaces_without_network_policy\":\\s*(\\d+)",
+    "logic": "GROUP1_LTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "0",
+    "message_on_fail": "Namespaces exist with no network policy, so pod traffic is unrestricted"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-OKTA-MFA",
+  "fetcher_name": "Okta MFA Enrolment",
+  "connector": "okta-inspector",
+  "handler": "okta_mfa_enrollment.sh",
+  "enabled": 0,
+  "description": "MFA factor enrolment across active Okta users.",
+  "dependencies": "curl\njq",
+  "tags": "identity",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-02",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "IAM-02",
+    "severity": "critical"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"users_without_mfa\":\\s*(\\d+)",
+    "logic": "GROUP1_LTE_EXPECTED",
+    "severity_on_fail": "critical",
+    "expected_value": "0",
+    "message_on_fail": "Active Okta users have no MFA factor enrolled"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-OKTA-DEPROVISION",
+  "fetcher_name": "Okta Deprovisioning",
+  "connector": "okta-inspector",
+  "handler": "okta_deprovisioning.sh",
+  "enabled": 0,
+  "description": "Deactivated users and residual application assignments.",
+  "dependencies": "curl\njq",
+  "tags": "identity,jml",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-05",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"deactivated_with_app_assignments\":\\s*(\\d+)",
+    "logic": "GROUP1_LTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "0",
+    "message_on_fail": "Deactivated users retain application assignments"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-GITLAB-BRANCH",
+  "fetcher_name": "GitLab Branch Protection",
+  "connector": "gitlab-inspector",
+  "handler": "gitlab_branch_protection.sh",
+  "enabled": 0,
+  "description": "Protected branch and merge approval configuration per project.",
+  "dependencies": "curl\njq",
+  "tags": "code",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "SDL-04",
+    "severity": "high"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "CHG-01",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"unprotected_default_branches\":\\s*(\\d+)",
+    "logic": "GROUP1_LTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "0",
+    "message_on_fail": "Projects have unprotected default branches"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-GITLAB-SCAN",
+  "fetcher_name": "GitLab Security Scanning",
+  "connector": "gitlab-inspector",
+  "handler": "gitlab_security_scanning.sh",
+  "enabled": 0,
+  "description": "SAST, dependency and secret detection coverage across pipelines.",
+  "dependencies": "curl\njq",
+  "tags": "code",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "SDL-02",
+    "severity": "high"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "SDL-03",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "Regex Capture",
+    "pattern": "\"projects_without_sast\":\\s*(\\d+)",
+    "logic": "GROUP1_LTE_EXPECTED",
+    "severity_on_fail": "high",
+    "expected_value": "0",
+    "message_on_fail": "Projects have no SAST scanning configured"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-CHECKOV-IAC",
+  "fetcher_name": "Checkov IaC Scan",
+  "connector": "checkov-inspector",
+  "handler": "run_checkov.sh",
+  "enabled": 0,
+  "description": "Policy violations found in infrastructure-as-code.",
+  "dependencies": "checkov",
+  "tags": "code,iac",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "CHG-03",
+    "severity": "medium"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "SDL-02",
+    "severity": "high"
+   },
+   {
+    "control_framework": "FEDRAMP-20X-KSI",
+    "control_id": "SVC-01",
+    "severity": "medium"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "summary.failed",
+    "logic": "VALUE_LTE_EXPECTED",
+    "severity_on_fail": "medium",
+    "expected_value": "0",
+    "message_on_fail": "Checkov reported failing infrastructure policy checks"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-Q-LEAVER-ROLES",
+  "fetcher_name": "Disabled users still holding roles",
+  "connector": "erpnext-query",
+  "handler_mode": "Query",
+  "handler": "",
+  "enabled": 0,
+  "output_format": "JSON",
+  "query_doctype": "Has Role",
+  "query_filters": "{\"parenttype\": \"User\"}",
+  "query_condition": "COUNT_EQUALS_ZERO",
+  "field_to_check": "",
+  "expected_value": "",
+  "threshold_value": 0,
+  "tolerance_days": 0,
+  "description": "Role assignments belonging to users that are no longer enabled.",
+  "instructions": "Narrow the filter to your leaver convention before relying on this. On most sites the correct filter joins User.enabled = 0; if your site disables by a custom status field, point the filter at that instead.",
+  "tags": "identity,leavers",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-03",
+    "severity": "critical"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "summary.passed",
+    "logic": "VALUE_EQUALS_EXPECTED",
+    "expected_value": "1",
+    "severity_on_fail": "critical",
+    "message_on_fail": "A disabled or departed user still holds role assignments"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-Q-STALE-SESSIONS",
+  "fetcher_name": "Users with no login in 90 days",
+  "connector": "erpnext-query",
+  "handler_mode": "Query",
+  "handler": "",
+  "enabled": 1,
+  "output_format": "JSON",
+  "query_doctype": "User",
+  "query_filters": "{\"enabled\": 1, \"user_type\": \"System User\", \"last_active\": [\"<\", \"@days_ago:90\"]}",
+  "query_condition": "COUNT_EQUALS_ZERO",
+  "field_to_check": "",
+  "expected_value": "",
+  "threshold_value": 0,
+  "tolerance_days": 0,
+  "description": "Dormant privileged accounts are the cheapest foothold an attacker gets.",
+  "instructions": "",
+  "tags": "identity,dormant",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-03",
+    "severity": "high"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-04",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "summary.passed",
+    "logic": "VALUE_EQUALS_EXPECTED",
+    "expected_value": "1",
+    "severity_on_fail": "high",
+    "message_on_fail": "Enabled desk accounts have not been used in 90 days and should be reviewed"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-Q-API-KEYS",
+  "fetcher_name": "Users holding API keys",
+  "connector": "erpnext-query",
+  "handler_mode": "Query",
+  "handler": "",
+  "enabled": 1,
+  "output_format": "JSON",
+  "query_doctype": "User",
+  "query_filters": "{\"enabled\": 1, \"api_key\": [\"is\", \"set\"]}",
+  "query_condition": "COUNT_EQUALS_ZERO",
+  "field_to_check": "",
+  "expected_value": "",
+  "threshold_value": 0,
+  "tolerance_days": 0,
+  "description": "Inventory of accounts with programmatic credentials issued.",
+  "instructions": "The key itself is never read or recorded, only its presence.",
+  "tags": "identity,credentials",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "IAM-05",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "summary.passed",
+    "logic": "VALUE_EQUALS_EXPECTED",
+    "expected_value": "1",
+    "severity_on_fail": "high",
+    "message_on_fail": "Accounts hold API keys; confirm each is issued to a service and rotated"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-Q-POLICY-REVIEW",
+  "fetcher_name": "Policies past review date",
+  "connector": "erpnext-query",
+  "handler_mode": "Query",
+  "handler": "",
+  "enabled": 1,
+  "output_format": "JSON",
+  "query_doctype": "NeoGRC Policy",
+  "query_filters": "{\"status\": \"Published\", \"next_review_at\": [\"<\", \"@today\"]}",
+  "query_condition": "COUNT_EQUALS_ZERO",
+  "field_to_check": "",
+  "expected_value": "",
+  "threshold_value": 0,
+  "tolerance_days": 0,
+  "description": "Programme hygiene: a policy two years past review evidences nothing.",
+  "instructions": "",
+  "tags": "governance,policy",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "GOV-03",
+    "severity": "medium"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "summary.passed",
+    "logic": "VALUE_EQUALS_EXPECTED",
+    "expected_value": "1",
+    "severity_on_fail": "medium",
+    "message_on_fail": "Published policies are past their review date"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-Q-EXCEPTION-EXPIRY",
+  "fetcher_name": "Exceptions past expiry still open",
+  "connector": "erpnext-query",
+  "handler_mode": "Query",
+  "handler": "",
+  "enabled": 1,
+  "output_format": "JSON",
+  "query_doctype": "NeoGRC Exception",
+  "query_filters": "{\"status\": \"Approved\", \"expires_on\": [\"<\", \"@today\"]}",
+  "query_condition": "COUNT_EQUALS_ZERO",
+  "field_to_check": "",
+  "expected_value": "",
+  "threshold_value": 0,
+  "tolerance_days": 0,
+  "description": "An expired exception treated as live is an undocumented control gap.",
+  "instructions": "",
+  "tags": "governance,exceptions",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "GOV-04",
+    "severity": "high"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "summary.passed",
+    "logic": "VALUE_EQUALS_EXPECTED",
+    "expected_value": "1",
+    "severity_on_fail": "high",
+    "message_on_fail": "Approved exceptions have passed their expiry date without being closed"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-Q-RISK-REVIEW",
+  "fetcher_name": "Risks past review cadence",
+  "connector": "erpnext-query",
+  "handler_mode": "Query",
+  "handler": "",
+  "enabled": 1,
+  "output_format": "JSON",
+  "query_doctype": "NeoGRC Risk",
+  "query_filters": "{\"status\": [\"!=\", \"Closed\"], \"next_review_at\": [\"<\", \"@today\"]}",
+  "query_condition": "COUNT_EQUALS_ZERO",
+  "field_to_check": "",
+  "expected_value": "",
+  "threshold_value": 0,
+  "tolerance_days": 0,
+  "description": "Risk register currency, scoped by the band-driven cadence.",
+  "instructions": "",
+  "tags": "governance,risk",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "GOV-05",
+    "severity": "medium"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "summary.passed",
+    "logic": "VALUE_EQUALS_EXPECTED",
+    "expected_value": "1",
+    "severity_on_fail": "medium",
+    "message_on_fail": "Open risks have passed their review date"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-Q-VENDOR-DPA",
+  "fetcher_name": "Vendors processing personal data without a DPA",
+  "connector": "erpnext-query",
+  "handler_mode": "Query",
+  "handler": "",
+  "enabled": 1,
+  "output_format": "JSON",
+  "query_doctype": "NeoGRC Vendor",
+  "query_filters": "{\"processes_personal_data\": 1, \"dpa_signed\": 0}",
+  "query_condition": "COUNT_EQUALS_ZERO",
+  "field_to_check": "",
+  "expected_value": "",
+  "threshold_value": 0,
+  "tolerance_days": 0,
+  "description": "PDPL Article 20 exposure: a processor without a contract is the controller's breach, not the processor's.",
+  "instructions": "",
+  "tags": "third-party,pdpl",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "TPR-02",
+    "severity": "critical"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "PRI-04",
+    "severity": "critical"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "summary.passed",
+    "logic": "VALUE_EQUALS_EXPECTED",
+    "expected_value": "1",
+    "severity_on_fail": "critical",
+    "message_on_fail": "Vendors process personal data with no signed data processing agreement"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-Q-BACKUP-FRESH",
+  "fetcher_name": "Backup taken within tolerance",
+  "connector": "erpnext-query",
+  "handler_mode": "Query",
+  "handler": "",
+  "enabled": 0,
+  "output_format": "JSON",
+  "query_doctype": "File",
+  "query_filters": "{\"is_private\": 1, \"creation\": [\">\", \"@days_ago:2\"]}",
+  "query_condition": "COUNT_GTE_THRESHOLD",
+  "field_to_check": "",
+  "expected_value": "",
+  "threshold_value": 1,
+  "tolerance_days": 0,
+  "description": "Coarse backup freshness check for sites not on managed hosting.",
+  "instructions": "Frappe Cloud and bench-managed backups do not always land in the File table. Verify against your actual backup destination before enabling.",
+  "tags": "resilience,backup",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "RES-01",
+    "severity": "critical"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "summary.passed",
+    "logic": "VALUE_EQUALS_EXPECTED",
+    "expected_value": "1",
+    "severity_on_fail": "critical",
+    "message_on_fail": "No backup artifact has been produced in the tolerance window"
+   }
+  ]
+ },
+ {
+  "fetcher_id": "EVD-Q-EMPLOYEE-ACK",
+  "fetcher_name": "Employees who have not acknowledged published policies",
+  "connector": "erpnext-query",
+  "handler_mode": "Query",
+  "handler": "",
+  "enabled": 1,
+  "output_format": "JSON",
+  "query_doctype": "NeoGRC Policy Acknowledgment",
+  "query_filters": "{}",
+  "query_condition": "ALL_ROWS_FIELD_EQUALS",
+  "field_to_check": "acknowledged",
+  "expected_value": "1",
+  "threshold_value": 0,
+  "tolerance_days": 0,
+  "description": "Awareness evidence. Acknowledgment rows are created automatically when a policy is published, so this measures actual sign-off rather than whether the policy exists.",
+  "instructions": "",
+  "tags": "hr,awareness,policy",
+  "controls": [
+   {
+    "control_framework": "NCC",
+    "control_id": "HRS-02",
+    "severity": "medium"
+   },
+   {
+    "control_framework": "NCC",
+    "control_id": "GOV-03",
+    "severity": "medium"
+   }
+  ],
+  "validation_rules": [
+   {
+    "rule_type": "JSON Path",
+    "pattern": "summary.passed",
+    "logic": "VALUE_EQUALS_EXPECTED",
+    "expected_value": "1",
+    "severity_on_fail": "medium",
+    "message_on_fail": "Employees have not acknowledged one or more published policies"
+   }
+  ]
+ }
+]

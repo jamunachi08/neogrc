@@ -1,0 +1,147 @@
+{
+  "findings": [
+    {
+      "schema_version": "1.0.0",
+      "source": "demo-negative",
+      "source_version": "1.0",
+      "run_id": "demo-negative",
+      "collected_at": "2026-08-01T00:00:00Z",
+      "resource": {
+        "type": "test_resource",
+        "id": "res-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-01",
+          "status": "fail",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "demo-negative",
+      "source_version": "1.0",
+      "run_id": "demo-negative",
+      "collected_at": "2026-08-01T00:00:00Z",
+      "resource": {
+        "type": "test_resource",
+        "id": "res-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-01",
+          "status": "fail",
+          "message": "something is wrong"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "demo-negative",
+      "source_version": "1.0",
+      "run_id": "demo-negative",
+      "collected_at": "2026-08-01T00:00:00Z",
+      "resource": {
+        "type": "test_resource",
+        "id": "res-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-01",
+          "status": "inconclusive"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "demo-negative",
+      "source_version": "1.0",
+      "run_id": "demo-negative",
+      "collected_at": "2026-08-01T00:00:00Z",
+      "resource": {
+        "type": "test_resource",
+        "id": "res-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-01",
+          "status": "green"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "demo-negative",
+      "source_version": "1.0",
+      "run_id": "demo-negative",
+      "collected_at": "2026-08-01T00:00:00Z",
+      "resource": {
+        "type": "test_resource",
+        "id": "res-1"
+      },
+      "evaluations": []
+    },
+    {
+      "schema_version": "2.0.0",
+      "source": "demo-negative",
+      "source_version": "1.0",
+      "run_id": "demo-negative",
+      "collected_at": "2026-08-01T00:00:00Z",
+      "resource": {
+        "type": "test_resource",
+        "id": "res-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-01",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "demo-negative",
+      "source_version": "1.0",
+      "run_id": "demo-negative",
+      "collected_at": "2026-08-01T00:00:00Z",
+      "resource": {
+        "type": "test_resource",
+        "id": "res-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-01",
+          "status": "pass",
+          "remediation": {
+            "effort_hours": -4
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "demo-negative",
+      "source_version": "1.0",
+      "run_id": "demo-negative",
+      "collected_at": "01/08/2026",
+      "resource": {
+        "type": "test_resource",
+        "id": "res-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-01",
+          "status": "pass"
+        }
+      ]
+    }
+  ]
+}

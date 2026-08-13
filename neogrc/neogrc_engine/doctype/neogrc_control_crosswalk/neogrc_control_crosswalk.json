@@ -1,0 +1,164 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "source_control",
+  "source_framework",
+  "cb_1",
+  "target_framework",
+  "target_control_id",
+  "target_control",
+  "sb_2",
+  "relationship",
+  "confidence",
+  "cb_2",
+  "source_of_mapping",
+  "imported_at",
+  "sb_3",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_control",
+   "fieldtype": "Link",
+   "label": "Source Control",
+   "options": "NeoGRC Control",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "source_framework",
+   "fieldtype": "Link",
+   "label": "Source Framework",
+   "options": "NeoGRC Framework",
+   "fetch_from": "source_control.framework",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_framework",
+   "fieldtype": "Link",
+   "label": "Target Framework",
+   "options": "NeoGRC Framework",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "target_control_id",
+   "fieldtype": "Data",
+   "label": "Target Control ID",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "target_control",
+   "fieldtype": "Link",
+   "label": "Target Control",
+   "options": "NeoGRC Control",
+   "description": "Resolved automatically when a matching NeoGRC Control record exists."
+  },
+  {
+   "fieldname": "sb_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "relationship",
+   "fieldtype": "Select",
+   "label": "Relationship",
+   "options": "equivalent\nsubset\nsuperset\nrelated",
+   "default": "equivalent",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "confidence",
+   "fieldtype": "Select",
+   "label": "Confidence",
+   "options": "high\nmedium\nlow",
+   "default": "high"
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_of_mapping",
+   "fieldtype": "Select",
+   "label": "Mapping Source",
+   "options": "Manual\nSCF Import\nFedRAMP 20x\nVendor Supplied\nDerived",
+   "default": "Manual"
+  },
+  {
+   "fieldname": "imported_at",
+   "fieldtype": "Datetime",
+   "label": "Imported At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Control Crosswalk",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "hash",
+ "naming_rule": "Random",
+ "search_fields": "source_control,target_framework,target_control_id"
+}

@@ -1,0 +1,237 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "run_id",
+  "status",
+  "cb_1",
+  "evidence_set",
+  "connector",
+  "sb_time",
+  "started_at",
+  "finished_at",
+  "cb_time",
+  "duration_seconds",
+  "triggered_by",
+  "trigger_source",
+  "sb_counts",
+  "fetchers_total",
+  "fetchers_succeeded",
+  "fetchers_failed",
+  "cb_counts",
+  "evaluations_pass",
+  "evaluations_fail",
+  "evaluations_inconclusive",
+  "sb_output",
+  "exit_code",
+  "evidence_path",
+  "run_log"
+ ],
+ "fields": [
+  {
+   "fieldname": "run_id",
+   "fieldtype": "Data",
+   "label": "Run ID",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Queued\nRunning\nSuccess\nPartial\nFailed\nCancelled",
+   "default": "Queued",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "evidence_set",
+   "fieldtype": "Link",
+   "label": "Evidence Set",
+   "options": "NeoGRC Evidence Set",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "connector",
+   "fieldtype": "Link",
+   "label": "Connector",
+   "options": "NeoGRC Connector",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_time",
+   "fieldtype": "Section Break",
+   "label": "Timing"
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "finished_at",
+   "fieldtype": "Datetime",
+   "label": "Finished At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_time",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "duration_seconds",
+   "fieldtype": "Float",
+   "label": "Duration (s)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "triggered_by",
+   "fieldtype": "Link",
+   "label": "Triggered By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "trigger_source",
+   "fieldtype": "Select",
+   "label": "Trigger Source",
+   "options": "Manual\nScheduler\nAPI",
+   "default": "Manual",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_counts",
+   "fieldtype": "Section Break",
+   "label": "Results"
+  },
+  {
+   "fieldname": "fetchers_total",
+   "fieldtype": "Int",
+   "label": "Fetchers Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fetchers_succeeded",
+   "fieldtype": "Int",
+   "label": "Succeeded",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fetchers_failed",
+   "fieldtype": "Int",
+   "label": "Failed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_counts",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "evaluations_pass",
+   "fieldtype": "Int",
+   "label": "Evaluations Pass",
+   "read_only": 1
+  },
+  {
+   "fieldname": "evaluations_fail",
+   "fieldtype": "Int",
+   "label": "Evaluations Fail",
+   "read_only": 1
+  },
+  {
+   "fieldname": "evaluations_inconclusive",
+   "fieldtype": "Int",
+   "label": "Inconclusive",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_output",
+   "fieldtype": "Section Break",
+   "label": "Run Log"
+  },
+  {
+   "fieldname": "exit_code",
+   "fieldtype": "Int",
+   "label": "Worst Exit Code",
+   "read_only": 1,
+   "description": "0 success, 2 auth, 3 rate limited, 4 partial, 5 dependency missing, 1 generic failure."
+  },
+  {
+   "fieldname": "evidence_path",
+   "fieldtype": "Data",
+   "label": "Evidence Path",
+   "read_only": 1
+  },
+  {
+   "fieldname": "run_log",
+   "fieldtype": "Code",
+   "label": "Run Log",
+   "options": "Text",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Evidence Run",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "format:EVR-{YY}{MM}-{####}",
+ "naming_rule": "Expression",
+ "search_fields": "run_id,evidence_set,connector"
+}

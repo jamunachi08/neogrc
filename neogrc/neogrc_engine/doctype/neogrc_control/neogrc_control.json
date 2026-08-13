@@ -1,0 +1,246 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "control_id",
+  "control_title",
+  "cb_1",
+  "framework",
+  "family",
+  "sb_2",
+  "objective",
+  "implementation_guidance",
+  "test_procedure",
+  "sb_3",
+  "automation",
+  "default_severity",
+  "cb_3",
+  "effort_hours",
+  "is_active",
+  "sb_4",
+  "owner_role",
+  "tags",
+  "sb_structure",
+  "domain",
+  "subdomain_code",
+  "subdomain_label",
+  "cb_structure",
+  "is_subcontrol",
+  "parent_control_id",
+  "applicability",
+  "is_reference_stub"
+ ],
+ "fields": [
+  {
+   "fieldname": "control_id",
+   "fieldtype": "Data",
+   "label": "Control ID",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Framework-native identifier, e.g. AC-2, CC6.1, CRY-05, SVC-03."
+  },
+  {
+   "fieldname": "control_title",
+   "fieldtype": "Data",
+   "label": "Control Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "framework",
+   "fieldtype": "Link",
+   "label": "Framework",
+   "options": "NeoGRC Framework",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "family",
+   "fieldtype": "Link",
+   "label": "Control Family",
+   "options": "NeoGRC Control Family"
+  },
+  {
+   "fieldname": "sb_2",
+   "fieldtype": "Section Break",
+   "label": "Objective & Guidance"
+  },
+  {
+   "fieldname": "objective",
+   "fieldtype": "Small Text",
+   "label": "Control Objective",
+   "description": "Author your own wording. Do not paste normative text from a licensed standard."
+  },
+  {
+   "fieldname": "implementation_guidance",
+   "fieldtype": "Text Editor",
+   "label": "Implementation Guidance"
+  },
+  {
+   "fieldname": "test_procedure",
+   "fieldtype": "Text Editor",
+   "label": "Test Procedure"
+  },
+  {
+   "fieldname": "sb_3",
+   "fieldtype": "Section Break",
+   "label": "Automation Posture"
+  },
+  {
+   "fieldname": "automation",
+   "fieldtype": "Select",
+   "label": "Automation Level",
+   "options": "\nauto_fixable\nsemi_automated\nmanual\ndesign_change",
+   "default": "manual",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "default_severity",
+   "fieldtype": "Select",
+   "label": "Default Severity",
+   "options": "\ncritical\nhigh\nmedium\nlow\ninfo",
+   "default": "medium"
+  },
+  {
+   "fieldname": "cb_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "effort_hours",
+   "fieldtype": "Float",
+   "label": "Baseline Effort (hours)",
+   "default": "0"
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "owner_role",
+   "fieldtype": "Link",
+   "label": "Accountable Role",
+   "options": "Role"
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Small Text",
+   "label": "Tags"
+  },
+  {
+   "fieldname": "sb_structure",
+   "fieldtype": "Section Break",
+   "label": "Framework Structure"
+  },
+  {
+   "fieldname": "domain",
+   "fieldtype": "Data",
+   "label": "Domain",
+   "description": "Top-level grouping as published by the framework issuer."
+  },
+  {
+   "fieldname": "subdomain_code",
+   "fieldtype": "Data",
+   "label": "Subdomain Code"
+  },
+  {
+   "fieldname": "subdomain_label",
+   "fieldtype": "Data",
+   "label": "Subdomain"
+  },
+  {
+   "fieldname": "cb_structure",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "is_subcontrol",
+   "fieldtype": "Check",
+   "label": "Is Subcontrol",
+   "default": "0"
+  },
+  {
+   "fieldname": "parent_control_id",
+   "fieldtype": "Data",
+   "label": "Parent Control ID",
+   "depends_on": "is_subcontrol"
+  },
+  {
+   "fieldname": "applicability",
+   "fieldtype": "Data",
+   "label": "Applicability",
+   "description": "Which entity classes the issuer applies this control to."
+  },
+  {
+   "fieldname": "is_reference_stub",
+   "fieldtype": "Check",
+   "label": "Reference Stub",
+   "default": "0",
+   "description": "Identifier carried for mapping only. Load licensed text to complete it."
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Control",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "format:{framework}::{control_id}",
+ "naming_rule": "Expression",
+ "title_field": "control_title",
+ "show_title_field_in_link": 1,
+ "search_fields": "control_id,control_title,framework"
+}

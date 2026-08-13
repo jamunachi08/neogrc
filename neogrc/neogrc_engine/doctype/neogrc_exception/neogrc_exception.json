@@ -1,0 +1,211 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "exception_id",
+  "title",
+  "cb_1",
+  "status",
+  "owner_user",
+  "sb_ctrl",
+  "control_framework",
+  "control_id",
+  "control",
+  "cb_ctrl",
+  "requested_on",
+  "expires_at",
+  "approved_by",
+  "sb_rat",
+  "rationale",
+  "risk_accepted_note",
+  "sb_comp",
+  "compensating_controls",
+  "sb_link",
+  "linked_findings",
+  "linked_risk"
+ ],
+ "fields": [
+  {
+   "fieldname": "exception_id",
+   "fieldtype": "Data",
+   "label": "Exception ID",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "requested\napproved\nrejected\nexpired\nclosed",
+   "default": "requested",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "owner_user",
+   "fieldtype": "Link",
+   "label": "Owner",
+   "options": "User",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_ctrl",
+   "fieldtype": "Section Break",
+   "label": "Scope"
+  },
+  {
+   "fieldname": "control_framework",
+   "fieldtype": "Link",
+   "label": "Framework",
+   "options": "NeoGRC Framework",
+   "reqd": 1
+  },
+  {
+   "fieldname": "control_id",
+   "fieldtype": "Data",
+   "label": "Control ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "control",
+   "fieldtype": "Link",
+   "label": "Control",
+   "options": "NeoGRC Control",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_ctrl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "requested_on",
+   "fieldtype": "Date",
+   "label": "Requested On",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expires_at",
+   "fieldtype": "Date",
+   "label": "Expires On",
+   "in_standard_filter": 1,
+   "description": "Exceptions without an expiry date are rejected on save. Every exception must be time-bound."
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "depends_on": "eval:['approved','closed','expired'].includes(doc.status)"
+  },
+  {
+   "fieldname": "sb_rat",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "rationale",
+   "fieldtype": "Text Editor",
+   "label": "Rationale",
+   "reqd": 1
+  },
+  {
+   "fieldname": "risk_accepted_note",
+   "fieldtype": "Small Text",
+   "label": "Accepted Risk"
+  },
+  {
+   "fieldname": "sb_comp",
+   "fieldtype": "Section Break",
+   "label": "Compensating Controls"
+  },
+  {
+   "fieldname": "compensating_controls",
+   "fieldtype": "Table",
+   "label": "Compensating Controls",
+   "options": "NeoGRC Compensating Control"
+  },
+  {
+   "fieldname": "sb_link",
+   "fieldtype": "Section Break",
+   "label": "Linkage"
+  },
+  {
+   "fieldname": "linked_findings",
+   "fieldtype": "Table",
+   "label": "Linked Findings",
+   "options": "NeoGRC Linked Finding"
+  },
+  {
+   "fieldname": "linked_risk",
+   "fieldtype": "Link",
+   "label": "Linked Risk",
+   "options": "NeoGRC Risk"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Exception",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:exception_id",
+ "naming_rule": "By fieldname",
+ "title_field": "title",
+ "show_title_field_in_link": 1
+}

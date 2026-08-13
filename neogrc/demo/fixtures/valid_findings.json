@@ -1,0 +1,238 @@
+{
+  "findings": [
+    {
+      "schema_version": "1.0.0",
+      "source": "aws-inspector",
+      "source_version": "2026.04.01",
+      "run_id": "demo-batch-1d",
+      "collected_at": "2026-08-11T09:43:03Z",
+      "resource": {
+        "type": "aws_s3_bucket",
+        "id": "wadi-prod-manifests",
+        "region": "me-south-1",
+        "arn": "arn:aws:s3:::wadi-prod-manifests"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-01",
+          "status": "fail",
+          "severity": "high",
+          "message": "Bucket has no default encryption configured",
+          "remediation": {
+            "summary": "Bucket has no default encryption configured",
+            "effort_hours": 1,
+            "automation": "auto_fixable"
+          }
+        },
+        {
+          "control_framework": "NCC",
+          "control_id": "DAT-01",
+          "status": "fail",
+          "severity": "medium",
+          "message": "Bucket policy permits read from any authenticated principal",
+          "remediation": {
+            "summary": "Bucket policy permits read from any authenticated principal",
+            "effort_hours": 3,
+            "automation": "semi_automated"
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "aws-inspector",
+      "source_version": "2026.04.01",
+      "run_id": "demo-batch-1d",
+      "collected_at": "2026-08-11T09:43:03Z",
+      "resource": {
+        "type": "aws_s3_bucket",
+        "id": "wadi-prod-invoices",
+        "region": "me-south-1",
+        "arn": "arn:aws:s3:::wadi-prod-invoices"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-01",
+          "status": "pass",
+          "severity": "info"
+        },
+        {
+          "control_framework": "NCC",
+          "control_id": "DAT-01",
+          "status": "pass",
+          "severity": "info"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "aws-inspector",
+      "source_version": "2026.04.01",
+      "run_id": "demo-batch-1d",
+      "collected_at": "2026-08-11T09:43:03Z",
+      "resource": {
+        "type": "aws_ebs_volume",
+        "id": "vol-0a1b2c3d4e5f",
+        "region": "me-south-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-02",
+          "status": "pass",
+          "severity": "info"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "aws-inspector",
+      "source_version": "2026.04.01",
+      "run_id": "demo-batch-1d",
+      "collected_at": "2026-08-11T09:43:03Z",
+      "resource": {
+        "type": "aws_iam_user",
+        "id": "svc-edi-legacy",
+        "region": "me-south-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "IAM-05",
+          "status": "fail",
+          "severity": "high",
+          "message": "Service account has console access and no MFA device",
+          "remediation": {
+            "summary": "Service account has console access and no MFA device",
+            "effort_hours": 4,
+            "automation": "manual"
+          }
+        },
+        {
+          "control_framework": "NCC",
+          "control_id": "IAM-03",
+          "status": "fail",
+          "severity": "medium",
+          "message": "Access key last rotated 612 days ago",
+          "remediation": {
+            "summary": "Access key last rotated 612 days ago",
+            "effort_hours": 1,
+            "automation": "auto_fixable"
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "aws-inspector",
+      "source_version": "2026.04.01",
+      "run_id": "demo-batch-1d",
+      "collected_at": "2026-08-11T09:43:03Z",
+      "resource": {
+        "type": "aws_cloudtrail",
+        "id": "wadi-org-trail",
+        "region": "me-south-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "LOG-01",
+          "status": "pass",
+          "severity": "info"
+        },
+        {
+          "control_framework": "NCC",
+          "control_id": "LOG-02",
+          "status": "inconclusive",
+          "message": "AccessDenied calling GetTrailStatus; the collection role lacks cloudtrail:GetTrailStatus so log delivery could not be confirmed"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "aws-inspector",
+      "source_version": "2026.04.01",
+      "run_id": "demo-batch-1d",
+      "collected_at": "2026-08-11T09:43:03Z",
+      "resource": {
+        "type": "aws_security_group",
+        "id": "sg-0ffee1234",
+        "region": "me-south-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "NET-01",
+          "status": "fail",
+          "severity": "critical",
+          "message": "Ingress 0.0.0.0/0 permitted on port 22",
+          "remediation": {
+            "summary": "Ingress 0.0.0.0/0 permitted on port 22",
+            "effort_hours": 1,
+            "automation": "auto_fixable"
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "aws-inspector",
+      "source_version": "2026.04.01",
+      "run_id": "demo-batch-1d",
+      "collected_at": "2026-08-11T09:43:03Z",
+      "resource": {
+        "type": "aws_rds_instance",
+        "id": "wadi-erp-prod",
+        "region": "me-south-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-01",
+          "status": "pass",
+          "severity": "info"
+        },
+        {
+          "control_framework": "NCC",
+          "control_id": "RES-01",
+          "status": "fail",
+          "severity": "high",
+          "message": "Automated backup retention set to 1 day, below the 35 day standard",
+          "remediation": {
+            "summary": "Automated backup retention set to 1 day, below the 35 day standard",
+            "effort_hours": 1,
+            "automation": "auto_fixable"
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source": "aws-inspector",
+      "source_version": "2026.04.01",
+      "run_id": "demo-batch-1d",
+      "collected_at": "2026-08-11T09:43:03Z",
+      "resource": {
+        "type": "aws_kms_key",
+        "id": "arn:aws:kms:me-south-1:key/abcd",
+        "region": "me-south-1"
+      },
+      "evaluations": [
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-03",
+          "status": "pass",
+          "severity": "info"
+        },
+        {
+          "control_framework": "NCC",
+          "control_id": "CRY-04",
+          "status": "not_applicable",
+          "message": "Key rotation is managed by AWS"
+        }
+      ]
+    }
+  ]
+}

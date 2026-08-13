@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "finding",
+  "resource_id",
+  "worst_severity",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "finding",
+   "fieldtype": "Link",
+   "label": "Finding",
+   "options": "NeoGRC Finding",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "resource_id",
+   "fieldtype": "Data",
+   "label": "Resource",
+   "fetch_from": "finding.resource_id",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "worst_severity",
+   "fieldtype": "Data",
+   "label": "Severity",
+   "fetch_from": "finding.worst_severity",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Data",
+   "label": "Note"
+  }
+ ],
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Linked Finding",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "track_changes": 1
+}

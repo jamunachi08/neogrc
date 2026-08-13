@@ -1,0 +1,347 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"grc-hd\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>GRC Engine</b></span>\", \"col\": 12}}, {\"id\": \"grc-p1\", \"type\": \"paragraph\", \"data\": {\"text\": \"Evidence-driven governance, risk and compliance. Connectors collect evidence, findings are scored against the control crosswalk, and gap assessments turn the result into an auditable position.\", \"col\": 12}}, {\"id\": \"grc-n1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Critical Findings\", \"col\": 4}}, {\"id\": \"grc-n2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Evidence Runs This Week\", \"col\": 4}}, {\"id\": \"grc-n3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Expired Exceptions\", \"col\": 4}}, {\"id\": \"grc-s1\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"grc-c1\", \"type\": \"card\", \"data\": {\"card_name\": \"Evidence Automation\", \"col\": 4}}, {\"id\": \"grc-c2\", \"type\": \"card\", \"data\": {\"card_name\": \"Controls & Frameworks\", \"col\": 4}}, {\"id\": \"grc-c3\", \"type\": \"card\", \"data\": {\"card_name\": \"Findings & Assessment\", \"col\": 4}}, {\"id\": \"grc-c4\", \"type\": \"card\", \"data\": {\"card_name\": \"Programme\", \"col\": 4}}, {\"id\": \"grc-c5\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}, {\"id\": \"grc-c6\", \"type\": \"card\", \"data\": {\"card_name\": \"Configuration\", \"col\": 4}}]",
+ "creation": "2026-08-12 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "shield",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "NeoGRC",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Evidence Automation",
+   "link_count": 5,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Connector",
+   "link_count": 0,
+   "link_to": "NeoGRC Connector",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Evidence Fetcher",
+   "link_count": 0,
+   "link_to": "NeoGRC Evidence Fetcher",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Evidence Set",
+   "link_count": 0,
+   "link_to": "NeoGRC Evidence Set",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Evidence Run",
+   "link_count": 0,
+   "link_to": "NeoGRC Evidence Run",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Evidence Artifact",
+   "link_count": 0,
+   "link_to": "NeoGRC Evidence Artifact",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Controls & Frameworks",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Framework",
+   "link_count": 0,
+   "link_to": "NeoGRC Framework",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Control",
+   "link_count": 0,
+   "link_to": "NeoGRC Control",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Control Family",
+   "link_count": 0,
+   "link_to": "NeoGRC Control Family",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Control Crosswalk",
+   "link_count": 0,
+   "link_to": "NeoGRC Control Crosswalk",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Findings & Assessment",
+   "link_count": 3,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Finding",
+   "link_count": 0,
+   "link_to": "NeoGRC Finding",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Narrative Finding",
+   "link_count": 0,
+   "link_to": "NeoGRC Narrative Finding",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Gap Assessment",
+   "link_count": 0,
+   "link_to": "NeoGRC Gap Assessment",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Programme",
+   "link_count": 5,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Risk",
+   "link_count": 0,
+   "link_to": "NeoGRC Risk",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Exception",
+   "link_count": 0,
+   "link_to": "NeoGRC Exception",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Policy",
+   "link_count": 0,
+   "link_to": "NeoGRC Policy",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Vendor",
+   "link_count": 0,
+   "link_to": "NeoGRC Vendor",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Metric",
+   "link_count": 0,
+   "link_to": "NeoGRC Metric",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Control Coverage Matrix",
+   "link_count": 0,
+   "link_to": "Control Coverage Matrix",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": "NeoGRC Control"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Findings by Control",
+   "link_count": 0,
+   "link_to": "Findings by Control",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": "NeoGRC Finding"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Evidence Freshness",
+   "link_count": 0,
+   "link_to": "Evidence Freshness",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": "NeoGRC Evidence Fetcher"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Multi Framework Optimisation",
+   "link_count": 0,
+   "link_to": "Multi Framework Optimisation",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": "NeoGRC Gap Assessment"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NeoGRC Settings",
+   "link_count": 0,
+   "link_to": "NeoGRC Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "dependencies": ""
+  }
+ ],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 40.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Evidence Runs",
+   "link_to": "NeoGRC Evidence Run",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "label": "Open Findings",
+   "link_to": "NeoGRC Finding",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Gap Assessments",
+   "link_to": "NeoGRC Gap Assessment",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Risk Register",
+   "link_to": "NeoGRC Risk",
+   "type": "DocType"
+  }
+ ],
+ "title": "NeoGRC"
+}

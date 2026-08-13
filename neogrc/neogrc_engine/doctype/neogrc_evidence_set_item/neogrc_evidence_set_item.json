@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fetcher",
+  "fetcher_name",
+  "connector",
+  "required"
+ ],
+ "fields": [
+  {
+   "fieldname": "fetcher",
+   "fieldtype": "Link",
+   "label": "Fetcher",
+   "options": "NeoGRC Evidence Fetcher",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "fetcher_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "fetch_from": "fetcher.fetcher_name",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "connector",
+   "fieldtype": "Data",
+   "label": "Connector",
+   "fetch_from": "fetcher.connector",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "required",
+   "fieldtype": "Check",
+   "label": "Required",
+   "default": "1",
+   "in_list_view": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Evidence Set Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "track_changes": 1
+}

@@ -1,0 +1,98 @@
+[
+ {
+  "framework": "NCC",
+  "family_code": "GOV",
+  "family_name": "Governance & Oversight",
+  "sort_index": 10
+ },
+ {
+  "framework": "NCC",
+  "family_code": "AST",
+  "family_name": "Asset Management",
+  "sort_index": 20
+ },
+ {
+  "framework": "NCC",
+  "family_code": "IAM",
+  "family_name": "Identity & Access Management",
+  "sort_index": 30
+ },
+ {
+  "framework": "NCC",
+  "family_code": "CRY",
+  "family_name": "Cryptography & Key Management",
+  "sort_index": 40
+ },
+ {
+  "framework": "NCC",
+  "family_code": "NET",
+  "family_name": "Network Security",
+  "sort_index": 50
+ },
+ {
+  "framework": "NCC",
+  "family_code": "DAT",
+  "family_name": "Data Protection",
+  "sort_index": 60
+ },
+ {
+  "framework": "NCC",
+  "family_code": "LOG",
+  "family_name": "Logging & Monitoring",
+  "sort_index": 70
+ },
+ {
+  "framework": "NCC",
+  "family_code": "VUL",
+  "family_name": "Vulnerability & Patch Management",
+  "sort_index": 80
+ },
+ {
+  "framework": "NCC",
+  "family_code": "CHG",
+  "family_name": "Change & Configuration Management",
+  "sort_index": 90
+ },
+ {
+  "framework": "NCC",
+  "family_code": "RES",
+  "family_name": "Resilience & Continuity",
+  "sort_index": 100
+ },
+ {
+  "framework": "NCC",
+  "family_code": "TPR",
+  "family_name": "Third-Party Risk",
+  "sort_index": 110
+ },
+ {
+  "framework": "NCC",
+  "family_code": "PRI",
+  "family_name": "Privacy",
+  "sort_index": 120
+ },
+ {
+  "framework": "NCC",
+  "family_code": "HRS",
+  "family_name": "Human Resources Security",
+  "sort_index": 130
+ },
+ {
+  "framework": "NCC",
+  "family_code": "IRP",
+  "family_name": "Incident Response",
+  "sort_index": 140
+ },
+ {
+  "framework": "NCC",
+  "family_code": "CLD",
+  "family_name": "Cloud & Platform Security",
+  "sort_index": 150
+ },
+ {
+  "framework": "NCC",
+  "family_code": "SDL",
+  "family_name": "Secure Development",
+  "sort_index": 160
+ }
+]

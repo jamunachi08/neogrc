@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "idx_label",
+  "rule_type",
+  "pattern",
+  "logic",
+  "expected_value",
+  "severity_on_fail",
+  "message_on_fail"
+ ],
+ "fields": [
+  {
+   "fieldname": "idx_label",
+   "fieldtype": "Data",
+   "label": "Rule",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "rule_type",
+   "fieldtype": "Select",
+   "label": "Rule Type",
+   "options": "Regex Capture\nJSON Path\nJSON Key Equals\nNon-Empty Output",
+   "default": "Regex Capture",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "pattern",
+   "fieldtype": "Small Text",
+   "label": "Pattern / Path",
+   "in_list_view": 1,
+   "description": "Regex with capture groups, or a dotted JSON path such as summary.encrypted_storage."
+  },
+  {
+   "fieldname": "logic",
+   "fieldtype": "Select",
+   "label": "Pass Logic",
+   "options": "ALL_GROUPS_EQUAL\nGROUP1_EQUALS_GROUP2\nGROUP1_EQUALS_EXPECTED\nGROUP1_GTE_EXPECTED\nGROUP1_LTE_EXPECTED\nVALUE_EQUALS_EXPECTED\nVALUE_GTE_EXPECTED\nVALUE_LTE_EXPECTED\nMATCH_EXISTS\nMATCH_ABSENT",
+   "default": "GROUP1_EQUALS_GROUP2",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "expected_value",
+   "fieldtype": "Data",
+   "label": "Expected Value"
+  },
+  {
+   "fieldname": "severity_on_fail",
+   "fieldtype": "Select",
+   "label": "Severity on Fail",
+   "options": "critical\nhigh\nmedium\nlow\ninfo",
+   "default": "high"
+  },
+  {
+   "fieldname": "message_on_fail",
+   "fieldtype": "Small Text",
+   "label": "Message on Fail"
+  }
+ ],
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Validation Rule",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "track_changes": 1
+}

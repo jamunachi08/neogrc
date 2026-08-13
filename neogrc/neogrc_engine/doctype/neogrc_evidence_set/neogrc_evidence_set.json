@@ -1,0 +1,170 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "set_id",
+  "set_name",
+  "cb_1",
+  "target_framework",
+  "enabled",
+  "sb_2",
+  "description",
+  "sb_3",
+  "fetchers",
+  "sb_4",
+  "schedule",
+  "next_run_on",
+  "cb_4",
+  "last_run",
+  "notify_on_failure",
+  "owner_user"
+ ],
+ "fields": [
+  {
+   "fieldname": "set_id",
+   "fieldtype": "Data",
+   "label": "Set ID",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "set_name",
+   "fieldtype": "Data",
+   "label": "Set Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_framework",
+   "fieldtype": "Link",
+   "label": "Target Framework",
+   "options": "NeoGRC Framework",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "sb_3",
+   "fieldtype": "Section Break",
+   "label": "Fetchers"
+  },
+  {
+   "fieldname": "fetchers",
+   "fieldtype": "Table",
+   "label": "Fetchers",
+   "options": "NeoGRC Evidence Set Item"
+  },
+  {
+   "fieldname": "sb_4",
+   "fieldtype": "Section Break",
+   "label": "Schedule"
+  },
+  {
+   "fieldname": "schedule",
+   "fieldtype": "Select",
+   "label": "Schedule",
+   "options": "Manual\nDaily\nWeekly\nMonthly\nQuarterly",
+   "default": "Manual",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "next_run_on",
+   "fieldtype": "Date",
+   "label": "Next Run On"
+  },
+  {
+   "fieldname": "cb_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_run",
+   "fieldtype": "Datetime",
+   "label": "Last Run",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notify_on_failure",
+   "fieldtype": "Check",
+   "label": "Notify Owner on Failure",
+   "default": "1"
+  },
+  {
+   "fieldname": "owner_user",
+   "fieldtype": "Link",
+   "label": "Evidence Owner",
+   "options": "User"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Evidence Set",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:set_id",
+ "naming_rule": "By fieldname",
+ "title_field": "set_name",
+ "show_title_field_in_link": 1
+}

@@ -1,0 +1,252 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-12 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "connector_id",
+  "connector_name",
+  "cb_1",
+  "category",
+  "enabled",
+  "sb_exec",
+  "handler_type",
+  "script_root",
+  "cb_exec",
+  "source_version",
+  "timeout",
+  "sb_auth",
+  "auth_mode",
+  "credential_key",
+  "cb_auth",
+  "required_env_vars",
+  "required_binaries",
+  "sb_state",
+  "last_run",
+  "last_status",
+  "last_run_id",
+  "cb_state",
+  "consecutive_failures",
+  "cache_ttl_hours",
+  "sb_notes",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "connector_id",
+   "fieldtype": "Data",
+   "label": "Connector ID",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "Lowercase slug, e.g. aws-inspector, okta, k8s, erpnext-internal."
+  },
+  {
+   "fieldname": "connector_name",
+   "fieldtype": "Data",
+   "label": "Connector Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Cloud\nSaaS\nCode\nSecurity Tooling\nIdentity\nInternal (ERPNext)\nOther",
+   "default": "Cloud",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_exec",
+   "fieldtype": "Section Break",
+   "label": "Execution"
+  },
+  {
+   "fieldname": "handler_type",
+   "fieldtype": "Select",
+   "label": "Handler Type",
+   "options": "Python\nShell\nInternal Query",
+   "default": "Python",
+   "reqd": 1,
+   "description": "Python handlers are dotted paths inside an installed app. Shell handlers run a script from the allow-listed script root."
+  },
+  {
+   "fieldname": "script_root",
+   "fieldtype": "Data",
+   "label": "Script Root",
+   "depends_on": "eval:doc.handler_type=='Shell'",
+   "description": "Absolute directory holding this connector's scripts. Fetcher handlers are resolved relative to it and may not escape it."
+  },
+  {
+   "fieldname": "cb_exec",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_version",
+   "fieldtype": "Data",
+   "label": "Source Version",
+   "default": "0.1.0",
+   "description": "Stamped onto every Finding this connector emits, for reproducibility."
+  },
+  {
+   "fieldname": "timeout",
+   "fieldtype": "Int",
+   "label": "Timeout (s)",
+   "default": "300"
+  },
+  {
+   "fieldname": "sb_auth",
+   "fieldtype": "Section Break",
+   "label": "Authentication"
+  },
+  {
+   "fieldname": "auth_mode",
+   "fieldtype": "Select",
+   "label": "Auth Mode",
+   "options": "None\nEnvironment Variables\nSite Config Key\nFrappe Credential\nInstance Role",
+   "default": "Environment Variables",
+   "reqd": 1
+  },
+  {
+   "fieldname": "credential_key",
+   "fieldtype": "Data",
+   "label": "Site Config / Credential Key",
+   "depends_on": "eval:['Site Config Key','Frappe Credential'].includes(doc.auth_mode)",
+   "description": "Key name only. Secrets are never stored on this record."
+  },
+  {
+   "fieldname": "cb_auth",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "required_env_vars",
+   "fieldtype": "Small Text",
+   "label": "Required Environment Variables",
+   "description": "One per line. Checked before a run starts; a missing variable produces exit code 2."
+  },
+  {
+   "fieldname": "required_binaries",
+   "fieldtype": "Small Text",
+   "label": "Required Binaries",
+   "description": "One per line, e.g. aws, jq, kubectl. Checked before a run starts (exit code 5)."
+  },
+  {
+   "fieldname": "sb_state",
+   "fieldtype": "Section Break",
+   "label": "Pipeline State"
+  },
+  {
+   "fieldname": "last_run",
+   "fieldtype": "Datetime",
+   "label": "Last Run",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "last_status",
+   "fieldtype": "Select",
+   "label": "Last Status",
+   "options": "\nSuccess\nPartial\nFailed\nAuth Error\nRate Limited\nNot Installed",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "last_run_id",
+   "fieldtype": "Data",
+   "label": "Last Run ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_state",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "consecutive_failures",
+   "fieldtype": "Int",
+   "label": "Consecutive Failures",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "cache_ttl_hours",
+   "fieldtype": "Int",
+   "label": "Cache TTL (hours)",
+   "default": "24",
+   "description": "Gap assessments treat findings older than this as stale."
+  },
+  {
+   "fieldname": "sb_notes",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoGRC Engine",
+ "name": "NeoGRC Connector",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "NeoGRC Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "NeoGRC Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "NeoGRC Auditor",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:connector_id",
+ "naming_rule": "By fieldname",
+ "title_field": "connector_name",
+ "show_title_field_in_link": 1,
+ "search_fields": "connector_name,category"
+}
